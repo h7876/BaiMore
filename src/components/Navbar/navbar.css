@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400');
+
+.topbar{
+    background-color: black;
+    position: fixed;
+    width: 100vw;
+    height: 50px;
+  
+}
+
+.title{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 200;
+    text-align: center;
+    position: relative;
+    top: 5px;
+    opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
+}
+
+.welcome{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 68px;
+    justify-content: center;
+    top: 50px;
+    position: relative;
+    opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
+
+}
+
+/* .navbuttonbar{
+    position: absolute;
+    top: 50px;
+
+} */
+.button{
+    background-color: white; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border: 1px solid white;
+    opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
+}
+
+.button:hover{
+    background-color: black; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: black;
+    font-size: 16px;
+    border: 1px solid white;
+    opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
+}
+.flex-container{
+    padding-top: 13px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1.5px solid black;
+    
+    
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
