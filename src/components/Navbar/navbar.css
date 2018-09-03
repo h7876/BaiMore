@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400');
 
+@media screen and (min-width:768px){
+#toggle{
+    display: none;
+}
+
 .topbar{
     background-color: black;
     position: fixed;
-    width: 100vw;
+    width: 100%;
     height: 50px;
   
 }
@@ -47,7 +52,7 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     color: black;
-    padding: 15px 32px;
+    padding: 15px 25px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -62,9 +67,9 @@
 .button:hover{
     background-color: black; 
     font-family: 'Montserrat', sans-serif;
-    font-weight: 200;
+    font-weight: 300;
     color: white;
-    padding: 15px 32px;
+    padding: 15px 25px;
     text-align: center;
     text-decoration: underline;
     text-decoration-color: black;
@@ -94,4 +99,195 @@
 	100% {
 		opacity: 1;
 	}
+}
+}
+
+@media screen and (min-width:300px)and (max-width:767px){
+    .topbar{
+        background-color: black;
+        position: fixed;
+        width: 100%;
+        height: 50px;
+      
+    }
+    
+    .title{
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 30px;
+        font-weight: 200;
+        text-align: center;
+        position: relative;
+        top: 5px;
+        opacity: 1;
+        animation-name: fadeInOpacity;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 2s;
+    }
+    
+    .welcome{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 68px;
+        justify-content: center;
+        top: 50px;
+        position: relative;
+        opacity: 1;
+        animation-name: fadeInOpacity;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 2s;
+    
+    }
+    
+    /* .navbuttonbar{
+        position: absolute;
+        top: 50px;
+    
+    } */
+    .button{
+       display: none;
+    }
+    
+    .button:hover{
+        display: none;
+    }
+    .flex-container{
+        display: none;
+        
+        
+    }
+    
+    @keyframes fadeInOpacity {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    a{
+        text-decoration: none;
+        color: black;
+        transition: color 0.4s ease;
+    }
+    a:hover{
+        color: #A55D35;
+    }
+    #toggle{
+  display: block;
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  
+  z-index: 1;
+  
+  -webkit-user-select: none;
+  user-select: none;
+}
+#toggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  
+  cursor: pointer;
+  
+  opacity: 0; 
+  z-index: 2; 
+  
+  -webkit-touch-callout: none;
+}
+#toggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: white;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#toggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#toggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Moves into X shape
+ */
+#toggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+#toggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#toggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+Styling of the Menu that slides out
+ */
+#menu
+{
+  position: absolute;
+  width: 250px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  
+  background: white;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * slide menu in
+ */
+#toggle input:checked ~ ul
+{
+  transform: none;
+}
+.nav {
+    display: none;
+}
 }

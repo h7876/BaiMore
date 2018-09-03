@@ -13,6 +13,26 @@ class Navbar extends Component {
     render(){
         return(
             <div>
+                <nav>
+                <div id="toggle">
+                <input type="checkbox"/>
+                <span></span>
+                <span></span>
+                <span></span>
+                    <ul id="menu">
+                        <a href=""><li>Home</li></a>
+                        <a href=""><li>Account</li></a>
+                        <a href=""><li>Women</li></a>
+                        <a href=""><li>Men</li></a>
+                        <a href=""><li>Hoodies</li></a>
+                        <a href=""><li>Jackets</li></a>
+                        <a href=""><li>Accessories</li></a>
+                        <a href=""><li>Socks</li></a>
+                        <a href=""><li>New</li></a>
+                        <a href=""><li>Popular</li></a>
+                    </ul>
+                </div>
+                </nav>
             <div className="topbar">
             </div>
             <div className="title">
