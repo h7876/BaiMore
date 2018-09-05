@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400, 600');
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400');
 
 @media screen and (min-width:768px){
 #toggle{
@@ -15,7 +16,7 @@
 
 .title{
     color: white;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 30px;
     font-weight: 200;
     text-align: center;
@@ -52,7 +53,7 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     color: black;
-    padding: 15px 25px;
+    padding: 12px 23px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -61,34 +62,45 @@
 	animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
-	animation-duration: 2s;
+	animation-duration: 1s;
+}
+
+.verticalbr {
+    width: 1px;
+    color: black;
+    background-color: black;
+    height: 30px;
+    position: relative;
+    
 }
 
 .button:hover{
-    background-color: black; 
+    background-color: white; 
     font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
-    color: white;
-    padding: 15px 25px;
-    text-align: center;
-    text-decoration: underline;
-    text-decoration-color: black;
+    font-weight: 200;
     font-size: 16px;
+    color: #A55D35;
+    padding: 12px 23px;
+    text-align: center;
+    /* text-decoration: underline;
+    text-decoration-color: black; */
     border: 1px solid white;
     opacity: 1;
 	animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
-	animation-duration: 2s;
+    animation-duration: 1s;
+
 }
 .flex-container{
-    padding-top: 13px;
+    padding-top: 18px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1.5px solid black;
-    
+    padding-left: 30px;
+    padding-right: 30px;
     
 }
 
@@ -113,7 +125,7 @@
     
     .title{
         color: white;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Quicksand', sans-serif;
         font-size: 30px;
         font-weight: 200;
         text-align: center;
@@ -262,7 +274,8 @@ Styling of the Menu that slides out
   margin: -100px 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
-  
+  border: solid 2px black;
+  justify-content: center;
   background: white;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
@@ -278,6 +291,8 @@ Styling of the Menu that slides out
 {
   padding: 10px 0;
   font-size: 22px;
+  /* border-bottom: solid 1px black; */
+  padding-left: 30px;
 }
 
 /*
