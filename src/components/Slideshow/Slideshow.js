@@ -11,7 +11,7 @@ class Slideshow extends Component {
         
         super();
         this.state = {
-            images: ['https://buzzsharer.com/wp-content/uploads/2016/10/corgi-photo.jpg', 'https://collegian.com/wp-content/uploads/2017/09/093017_APOTTS_AC_TourdeCorgi-9.jpg', 'https://assets3.thrillist.com/v1/image/2444807/size/tmg-article_tall;jpeg_quality=20.jpg', 'https://uproxx.files.wordpress.com/2016/09/loki-the-corgi.jpg?quality=95&w=650', 'https://static.boredpanda.com/blog/wp-content/uploads/2018/05/funny-corgis-cute-dogs-42-5afd687db521e__700.jpg', 'http://i.imgur.com/WMlHCpH.jpg', 'http://www.bravotv.com/sites/nbcubravotv/files/styles/blog-post--mobile/public/field_blog_image/2018/04/unleashed-corgi-people-promo.jpg?itok=mKp8i56f&timestamp=1524257239'],
+            images: ['https://cdn.jane.com/content/images/retail/2018/fall/21week2-web.jpg', 'https://cdn.jane.com/content/images/giveaway/2018/2018-09-03/2018-09-03-apt2b-index.jpg', 'https://cdn.jane.com/content/images/jane/banners/slider/app/app-slider-banner-2018-09-05.jpg'],
             currentImage: 0
         }
         this.setCarouselImg = this.setCarouselImg.bind(this);
@@ -61,10 +61,12 @@ class Slideshow extends Component {
         return(
             <div>
             <div className='flex-container-carousel'>
+            <div className="overlayback"></div>
                 <button onClick={this.moveCarouselBackward} className="backbutton"></button>
-                    <img className="overlay"/>
+                    <img className="overlay" alt=""/>
                     <img src={this.state.images[this.state.currentImage]} alt="" className="carouselimg"/>
-                <button onClick={this.moveCarouselForward} className="forwardbutton"></button>
+                    <div className="overlayforward"></div>
+                    <button onClick={this.moveCarouselForward} className="forwardbutton"></button>
                 </div>
                 <div className="dots-flex">
                 <span class="dot1" dot-selected={this.state.currentImage === 0 ? 'on' : 'off'}></span>

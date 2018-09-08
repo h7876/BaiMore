@@ -269,6 +269,7 @@ Styling of the Menu that slides out
  */
 #menu
 {
+
   position: absolute;
   width: 250px;
   margin: -100px 0 0 -50px;

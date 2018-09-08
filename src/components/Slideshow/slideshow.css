@@ -1,39 +1,40 @@
 .backbutton {
-    z-index: 3;
-    display: block;
+
+    display: flex;
     position: absolute;
     left:25px;
-    background-color: transparent;
+    background-color:transparent;
     height: 30px;
     width: 30px;
-    border-left: 3px solid white;
-    border-top: 3px solid white;
+    border-left: 3px solid black;
+    border-top: 3px solid black;
     border-right: transparent;
     border-bottom: transparent;
     transform: rotate(-45deg);
     padding: 0px;
     outline: none;
     cursor: pointer;
-    /* mix-blend-mode: exclusion; */
+    margin-left: auto;
+    /* mix-blend-mode: difference; */
    
 }
 .forwardbutton {
-    z-index: 3;
-    display: block;
+    
+    display: flex;
     position: absolute;
     right:25px;
     background-color: transparent;
     height: 30px;
     width: 30px;
-    border-right: 3px solid white;
-    border-bottom: 3px solid white;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
     border-top: transparent;
     border-left: transparent;
     transform: rotate(-45deg);
     padding: 0px;
     outline: none;
     cursor: pointer;
-    /* mix-blend-mode: exclusion; */
+    /* mix-blend-mode: difference; */
 }
 
 .flex-container-carousel {
@@ -42,25 +43,30 @@
     flex-direction: row;
     align-items: center; 
      /* border: 1.5px solid black; */
-    width: auto;
+    max-width: 1500px;
+    min-width: auto;
     height: 300px;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .carouselimg {
-    width: 100vw;
+    width: 1500px;
+    /* min-width: 300px; */
     height: 300px;
 
 }
-.overlay{
+/* .overlay{
     z-index: 2;
     position: absolute;
-    background: rgba(0, 0, 0, 0.192);
+    background: rgba(0, 0, 0, 0.062);
     width: 100vw;
     height: 300px;
-}
+} */
 
 .dots-flex{
-    z-index: 3;
+  
     display: block;
     position: absolute;
     margin-top: auto;
@@ -70,7 +76,7 @@
 }
 
 .dot4{
-    z-index: 3;
+
     height: 10px;
     width: 10px;
     background-color: gray;
@@ -85,7 +91,7 @@
     
   }
   .dot3{
-    z-index: 3;
+
     height: 10px;
     width: 10px;
     background-color: gray;
@@ -99,7 +105,7 @@
     border: none;
   }
   .dot5{
-    z-index: 3;
+  
     height: 10px;
     width: 10px;
     background-color: gray;
@@ -113,7 +119,7 @@
     border: none;
   }
   .dot2{
-    z-index: 3;
+    
     height: 10px;
     width: 10px;
     background-color: gray;
@@ -127,7 +133,7 @@
     border: none;
   }
   .dot6{
-    z-index: 3;
+
     height: 10px;
     width: 10px;
     background-color: gray;
@@ -141,7 +147,7 @@
     border: none;
   }
   .dot7{
-    z-index: 3;
+
     height: 10px;
     width: 10px;
     background-color: gray;
@@ -155,7 +161,7 @@
     border: none;
   }
   .dot1{
-    z-index: 3;
+
     height: 10px;
     width: 10px;
     background-color: white;
@@ -175,4 +181,75 @@
   [dot-selected="off"]{
       background-color: gray;
       
+  }
+
+  @media screen and (min-width:300px)and (max-width:1535px){
+    .backbutton{
+        display: flex;
+        position: absolute;
+        left:25px;
+        background-color:transparent;
+        height: 30px;
+        width: 30px;
+        border-left: 3px solid white;
+        border-top: 3px solid white;
+        border-right: transparent;
+        border-bottom: transparent;
+        transform: rotate(-45deg);
+        padding: 0px;
+        outline: none;
+        cursor: pointer;
+        margin-left: auto;
+    }
+    .forwardbutton{
+        display: flex;
+        position: absolute;
+        right:25px;
+        background-color: transparent;
+        height: 30px;
+        width: 30px;
+        border-right: 3px solid white;
+        border-bottom: 3px solid white;
+        border-top: transparent;
+        border-left: transparent;
+        transform: rotate(-45deg);
+        padding: 0px;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .overlayback {
+        
+        position: absolute;
+        background: rgba(0, 0, 0, 0.39);
+
+        display: flex;
+        position: absolute;
+        left:15px;
+      
+        height: 50px;
+        width: 35px;
+       
+        padding: 0px;
+        outline: none;
+       
+        margin-left: auto;
+    }
+    .overlayforward {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.39);
+
+        display: flex;
+        position: absolute;
+        right:15px;
+      
+        height: 50px;
+        width: 35px;
+       
+        padding: 0px;
+        outline: none;
+       
+        margin-left: auto;
+    }
+  
   }
