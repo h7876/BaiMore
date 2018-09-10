@@ -8,7 +8,6 @@ class Slideshow extends Component {
         this.setCarouselImg();
     }
     constructor(){
-        
         super();
         this.state = {
             images: ['https://cdn.jane.com/content/images/retail/2018/fall/21week2-web.jpg', 'https://cdn.jane.com/content/images/giveaway/2018/2018-09-03/2018-09-03-apt2b-index.jpg', 'https://cdn.jane.com/content/images/jane/banners/slider/app/app-slider-banner-2018-09-05.jpg'],
@@ -18,7 +17,7 @@ class Slideshow extends Component {
         this.moveCarouselBackward = this.moveCarouselBackward.bind(this);
         this.moveCarouselForward = this.moveCarouselForward.bind(this);
     }
-
+    
     moveCarouselForward(){
         if(this.state.currentImage === this.state.images.length -1){
         this.setState({currentImage: 0})
@@ -57,28 +56,24 @@ class Slideshow extends Component {
     }
 
     render(){
-        
         return(
             <div>
             <div className='flex-container-carousel'>
-            <div className="overlayback"></div>
+                <div className="overlayforward"></div>
+                <div className="overlayback"></div>
                 <button onClick={this.moveCarouselBackward} className="backbutton"></button>
-                    <img className="overlay" alt=""/>
                     <img src={this.state.images[this.state.currentImage]} alt="" className="carouselimg"/>
-                    <div className="overlayforward"></div>
-                    <button onClick={this.moveCarouselForward} className="forwardbutton"></button>
+                <button onClick={this.moveCarouselForward} className="forwardbutton"></button>
                 </div>
                 <div className="dots-flex">
-                <span class="dot1" dot-selected={this.state.currentImage === 0 ? 'on' : 'off'}></span>
-                <span class="dot2" dot-selected={this.state.currentImage === 1 ? 'on' : 'off'}></span>
-                <span class="dot3" dot-selected={this.state.currentImage === 2 ? 'on' : 'off'}></span>
-                <span class="dot4" dot-selected={this.state.currentImage === 3 ? 'on' : 'off'}></span>
-                <span class="dot5" dot-selected={this.state.currentImage === 4 ? 'on' : 'off'}></span>
-                <span class="dot6" dot-selected={this.state.currentImage === 5 ? 'on' : 'off'}></span>
-                <span class="dot7" dot-selected={this.state.currentImage === 6 ? 'on' : 'off'}></span>
+                <span className="dot1" dot-selected={this.state.currentImage === 0 ? 'on' : 'off'}></span>
+                <span className="dot2" dot-selected={this.state.currentImage === 1 ? 'on' : 'off'}></span>
+                <span className="dot3" dot-selected={this.state.currentImage === 2 ? 'on' : 'off'}></span>
+                <span className="dot4" dot-selected={this.state.currentImage === 3 ? 'on' : 'off'}></span>
+                <span className="dot5" dot-selected={this.state.currentImage === 4 ? 'on' : 'off'}></span>
+                <span className="dot6" dot-selected={this.state.currentImage === 5 ? 'on' : 'off'}></span>
+                <span className="dot7" dot-selected={this.state.currentImage === 6 ? 'on' : 'off'}></span>
                 </div>
-            
-            {/* <p>{this.state.currentImage}</p> */}
             </div>
         )
     }
