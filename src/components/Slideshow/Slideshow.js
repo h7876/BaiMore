@@ -17,7 +17,7 @@ class Slideshow extends Component {
         this.moveCarouselBackward = this.moveCarouselBackward.bind(this);
         this.moveCarouselForward = this.moveCarouselForward.bind(this);
     }
-    
+
     moveCarouselForward(){
         if(this.state.currentImage === this.state.images.length -1){
         this.setState({currentImage: 0})
@@ -38,18 +38,17 @@ class Slideshow extends Component {
 
     setCarouselImg(){
         let i =0;
-        setInterval(()=>{
+        // eslint-disable-next-line
+        let imgTimer = setInterval(()=>{
         if(i !== this.state.currentImage){
             i=this.state.currentImage
-            clearInterval(setInterval)
             i++
         }
         if(i === this.state.currentImage){
             i++
         }
        if(i === this.state.images.length || i > this.state.images.length){
-          i=0;
-         
+          i=0
        }
        this.setState({currentImage:i})
     }, 7000);
@@ -57,7 +56,7 @@ class Slideshow extends Component {
 
     render(){
         return(
-            <div>
+            <div className="test">
             <div className='flex-container-carousel'>
                 <div className="overlayforward"></div>
                 <div className="overlayback"></div>
@@ -69,12 +68,9 @@ class Slideshow extends Component {
                 <span className="dot1" dot-selected={this.state.currentImage === 0 ? 'on' : 'off'}></span>
                 <span className="dot2" dot-selected={this.state.currentImage === 1 ? 'on' : 'off'}></span>
                 <span className="dot3" dot-selected={this.state.currentImage === 2 ? 'on' : 'off'}></span>
-                <span className="dot4" dot-selected={this.state.currentImage === 3 ? 'on' : 'off'}></span>
-                <span className="dot5" dot-selected={this.state.currentImage === 4 ? 'on' : 'off'}></span>
-                <span className="dot6" dot-selected={this.state.currentImage === 5 ? 'on' : 'off'}></span>
-                <span className="dot7" dot-selected={this.state.currentImage === 6 ? 'on' : 'off'}></span>
                 </div>
-            </div>
+                </div>
+
         )
     }
 }
