@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express')
-, session = require('express')
+, session = require('express-session')
 , massive = require('massive')
 , bodyParser = require('body-parser');
 
@@ -16,6 +16,17 @@ massive(CONNECTION_STRING).then((db)=> {
     console.log('DB Connected!')
     app.set('db', db)
 });
+
+app.get('/api/products/', (req, res) => {
+    const dbInstance = req.app.get('db');
+    dbInstance.getProducts()
+    .then(products => {res.status(200).send(products);
+        console.log(products);
+   }).catch(err => {
+    console.log(err);
+    res.status(500).send(err)
+});
+})
 
 app.listen(SERVER_PORT, ()=> {
     console.log(`Magic is happening on port: ${SERVER_PORT}`)
