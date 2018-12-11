@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 // eslint-disable-next-line
 import navbar from './navbar.css';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
     constructor(){
@@ -36,7 +37,9 @@ class Navbar extends Component {
             <div className="topbar">
             </div>
             <div className="title">
+            <Link to="/">
             BaiMore
+            </Link>
             </div>
             <div className="welcome"></div>
             <div className="flex-container">

@@ -50,7 +50,7 @@ body{
 }
 
 .flex-container-carousel {
-    margin-top: none;
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -296,7 +296,7 @@ body{
    @media screen and (min-width:768px)and (max-width:1250px){
 
     .flex-container-carousel {
-        margin-top: none;
+        margin-top: 50px;
 
         /* flex-direction: row; */
         /* align-items: center;  */

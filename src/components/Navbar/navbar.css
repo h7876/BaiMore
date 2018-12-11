@@ -31,6 +31,10 @@
   animation-duration: 2s;
   z-index: 3;
 }
+.title a {
+    text-decoration: none;
+    color:white;
+}
 
 /* .welcome{
     font-family: 'Montserrat', sans-serif;
@@ -154,6 +158,10 @@
         animation-duration: 2s;
         z-index: 3;
 
+    }
+    .title a {
+        text-decoration: none;
+        color: white;
     }
 
     .welcome{

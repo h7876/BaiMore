@@ -28,6 +28,17 @@ app.get('/api/products/', (req, res) => {
 });
 })
 
+app.get('/api/product/:productcode', (req, res)=> {
+    const productcode = req.params.productcode
+    const dbInstance = req.app.get('db');
+    dbInstance.getProduct([productcode]).then(product => {
+        res.status(200).send(product);
+    }).catch(err=> {
+        console.log(err);
+        res.status(500).send(err)
+    })
+})
+
 app.listen(SERVER_PORT, ()=> {
     console.log(`Magic is happening on port: ${SERVER_PORT}`)
 });

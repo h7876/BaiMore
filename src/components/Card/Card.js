@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 // eslint-disable-next-line
 import card from './card.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Card extends Component {
 
@@ -29,9 +30,22 @@ class Card extends Component {
     const productsToDisplay = this.state.realProducts.map((el, i)=> {
       return(
         <div className="card" key={el + i}>
-          {el.productname}
-          <br/>
-          <img src={el.image} alt="Product Photo" height="280" width="200" ></img>
+         <Link to={`/product/${el.productcode}`}>
+         
+          <div className="productimg">
+          <img src={el.image} alt="Product" height="330" width="260" ></img>
+          <div className="flexy">
+
+            <div className="productname">
+         
+              {el.productname}
+              
+            </div>
+          <div className="price">{`${"$"}`+ el.price}</div>
+          </div>
+          </div>
+          
+          </Link>
         </div>
       )
     })

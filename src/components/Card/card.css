@@ -1,9 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500');
 
 .card{
   background-color: white;
-  height: 300px;
-  width: 250px;
+  height: 360px;
+  width: 260px;
   margin: 10px;
+  display: flex;
+}
+.productname{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  text-decoration: underline;
+  left:10px;
+  font-size: 12px;
+  flex-direction: row;
+  padding-right: 15px
+}
+.productimg:hover{
+  opacity: 50;
+
+}
+.card a {
+  text-decoration: none;
+  color: black;
+}
+.flexy{
+  display: inline-flex;
+  padding-left:5px;
+  /* padding-top:2px; */
+  
+}
+/* .productimg{
+  margin-top:10px;
+  margin-bottom: none;
+} */
+.price{
+  font-family: 'Quicksand', sans-serif;
+  padding-bottom:5px;
+  font-size:12px;
 }
 .flexbox{
 z-index: 1;
@@ -16,6 +50,8 @@ z-index: 1;
  padding-top: 10px;
  position: absolute;
  top:400px;
+ padding-left:40px;
+ padding-right:40px;
 }
 
 @media screen and (min-width:300px)and (max-width:767px){
