@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400, 600');
+
+.singleproductcontainer {
+    background-color: white;
+    height: 900px;
+    width: 800px;
+    display: flex;
+    position: relative;
+    margin: auto;
+}
+.singleproductimg {
+    height: 500px;
+    width: 400px;
+    position: relative;
+    margin-top:30px;
+    margin-left:30px;
+}
+.singleproductimg img {
+    height: 500px;
+    width: 400px;
+    position: relative;
+  
+}
+.singleproductname h1 {
+    font-family: 'Montserrat', sans-serif;
+    height:30px;
+    width:300px;
+    font-weight: 300;
+    position: absolute;
+    top: 10px;
+    right: 32px;
+    
+}
+
+.singleproductflex {
+    display: flex;
+    margin-top:20px;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    padding-top:90px;
+}
