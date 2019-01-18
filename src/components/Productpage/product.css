@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400, 600');
-
+.singleproductflex {
+    display: flex;
+    margin-top:20px;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    padding-top:90px;
+}
 .singleproductcontainer {
     background-color: white;
     height: 900px;
@@ -14,6 +21,7 @@
     position: relative;
     margin-top:30px;
     margin-left:30px;
+    background-color: #EEEEEE;
 }
 .singleproductimg img {
     height: 500px;
@@ -23,20 +31,42 @@
 }
 .singleproductname h1 {
     font-family: 'Montserrat', sans-serif;
-    height:30px;
-    width:300px;
+    height:auto;
+    width:auto;
+    max-width: 360px;
     font-weight: 300;
-    position: absolute;
+    position: relative;
     top: 10px;
-    right: 32px;
+    /* left:32px; */
     
 }
-
-.singleproductflex {
-    display: flex;
-    margin-top:20px;
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    padding-top:90px;
+.singleproductprice {
+    font-family: 'Montserrat', sans-serif;
+    font-weight:300;
+    font-size: 15px;
+    position: relative;
+    padding-top:5px;
+    height: 70px;
+    width: 370px;
 }
+.singleproductprice input{
+    height: 34px;
+    width: 60px;
+    margin-left: 20px;
+    font-size: 15px;
+    margin-right: 2px;
+}
+.singleproductprice button{
+    height: 40px;
+    width: 70px;
+    background-color: black;
+    color: white;
+    margin-right:10px;
+}
+.singleline {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    width: 370px;
+}
+
