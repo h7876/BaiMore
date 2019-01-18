@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 // eslint-disable-next-line
 import navbar from './navbar.css';
 import { Link } from 'react-router-dom';
+import Auth from '../Auth/Auth';
 
 class Navbar extends Component {
     constructor(){
@@ -14,6 +15,7 @@ class Navbar extends Component {
     render(){
         return(
             <div>
+                <Auth/>
                 <nav>
                 <div id="toggle">
                 <input type="checkbox"/>
