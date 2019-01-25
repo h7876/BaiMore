@@ -14,9 +14,11 @@ class Auth extends Component{
     render(){
         return(
             <div>
+                <Link to='/signup'>
                 <div className="login">
                     <button>Login</button>
                 </div>
+                </Link>
                 <Link to='/signup'>
                     <div className="signup">
                         <button>Sign Up</button>
