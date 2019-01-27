@@ -6,13 +6,7 @@ import Card from '../Card/Card.js';
 import home from './home.css';
 
  class Home extends Component {
-    constructor(){
-        super();
-        this.state = {
-
-        }
-    }
-
+   
     render(){
         return(
             <div>

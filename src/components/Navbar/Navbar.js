@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // eslint-disable-next-line
 import navbar from './navbar.css';
 import { Link } from 'react-router-dom';
-import Auth from '../Auth/Auth';
+import AuthOptions from '../Auth/AuthOptions';
 
 class Navbar extends Component {
     constructor(){
@@ -15,7 +15,8 @@ class Navbar extends Component {
     render(){
         return(
             <div>
-                <Auth/>
+                
+                <AuthOptions/>
                 <nav>
                 <div id="toggle">
                 <input type="checkbox"/>
@@ -23,16 +24,16 @@ class Navbar extends Component {
                 <span></span>
                 <span></span>
                     <ul id="menu">
-                        <a href=""><li>Home</li></a>
-                        <a href=""><li>Account</li></a>
-                        <a href=""><li>Women</li></a>
-                        <a href=""><li>Men</li></a>
-                        <a href=""><li>Hoodies</li></a>
-                        <a href=""><li>Jackets</li></a>
-                        <a href=""><li>Accessories</li></a>
-                        <a href=""><li>Socks</li></a>
-                        <a href=""><li>New</li></a>
-                        <a href=""><li>Popular</li></a>
+                        <a href="/"><li>Home</li></a>
+                        <a href="/account"><li>Account</li></a>
+                        <a href="/products/categories/women"><li>Women</li></a>
+                        <a href="/products/categories/men"><li>Men</li></a>
+                        <a href="/products/categories/hoodies"><li>Hoodies</li></a>
+                        <a href="/products/categories/jackets"><li>Jackets</li></a>
+                        <a href="/products/categories/accessories"><li>Accessories</li></a>
+                        <a href="/products/categories/socks"><li>Socks</li></a>
+                        <a href="/products/categories/new"><li>New</li></a>
+                        <a href="/products/categories/popular"><li>Popular</li></a>
                     </ul>
                 </div>
                 </nav>
