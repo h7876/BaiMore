@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import Navbar from '../Navbar/Navbar';
+import login from './login.css';
+
 
 class Login extends Component {
     constructor(){
@@ -37,10 +40,14 @@ class Login extends Component {
         });
 
         return(
-            <div> 
-                Email: <input type="text" onChange={event => this.setState(updateByPropertyName('email', event.target.value))}></input>
-                Password: <input type="text" onChange={event => this.setState(updateByPropertyName('password', event.target.value))}></input>
-                <button onClick={this.logInExistingUser}>Log In</button>
+            <div>
+                <Navbar/>
+                <div className="loginfields"> 
+                    <h1>Login</h1>
+                    <input type="text" placeholder="Email" onChange={event => this.setState(updateByPropertyName('email', event.target.value))}></input><br/><br/>
+                    <input type="password" placeholder="Password" onChange={event => this.setState(updateByPropertyName('password', event.target.value))}></input><br/><br/>
+                    <button onClick={this.logInExistingUser}>Log In</button>
+                </div>
             </div>
         )
     }

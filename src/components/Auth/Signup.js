@@ -3,6 +3,8 @@ import base from '../../Base';
 import firebase from 'firebase';
 import {auth} from '../Firebase/firebase';
 import axios from 'axios';
+import signup from './signup.css';
+import Navbar from '../Navbar/Navbar';
 
 
 class Signup extends Component {
@@ -36,7 +38,6 @@ class Signup extends Component {
             var errorMessage = error.message;
             alert(errorMessage)
           })
-    
     }
     
     render(){
@@ -51,16 +52,18 @@ class Signup extends Component {
             [propertyName]: value
           });
         return(
-            <div> 
-                
-                    First Name: <input type="text" onChange={event => this.setState(updateByPropertyName('firstname', event.target.value))}></input> <br/><br/>
-                    Last Name:  <input type="text" onChange={event => this.setState(updateByPropertyName('lastname', event.target.value))}></input><br/><br/>
-                    Email: <input type="text" onChange={event => this.setState(updateByPropertyName('email', event.target.value))}></input> <br/><br/>
-                    Password:  <input type="text" onChange={event => this.setState(updateByPropertyName('password', event.target.value))}></input><br/><br/>
-                    Phone:  <input type="number" onChange={event => this.setState(updateByPropertyName('phone', event.target.value))}></input><br/><br/>
+            <div>
+                <Navbar/>
+                <div className="signupfields"> 
+                    <h1>Sign Up</h1>
+                    <input type="text" placeholder="First Name" onChange={event => this.setState(updateByPropertyName('firstname', event.target.value))}></input><br/><br/>
+                    <input type="text" placeholder="Last Name" onChange={event => this.setState(updateByPropertyName('lastname', event.target.value))}></input><br/><br/>
+                    <input type="text" placeholder="Email" onChange={event => this.setState(updateByPropertyName('email', event.target.value))}></input><br/><br/>
+                    <input type="password" placeholder="Password" onChange={event => this.setState(updateByPropertyName('password', event.target.value))}></input><br/><br/>
+                    <input type="number" placeholder="Phone Number" onChange={event => this.setState(updateByPropertyName('phone', event.target.value))}></input><br/><br/>
                     <button onClick={this.createUser}>Submit</button>
-                
-            </div>
+                </div>
+            </div> 
         )
     }
 }
