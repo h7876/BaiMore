@@ -4,6 +4,7 @@ import Home from './components/Home/Home';
 import Product from './components/Productpage/Product'
 import Signup from './components/Auth/Signup'
 import Login from './components/Auth/Login'
+import Cart from './components/Account/Cart'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
@@ -17,6 +18,7 @@ class App extends Component {
         <Route path='/product/:productcode' component={Product}/>
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
+        <Route path='/cart' component={Cart}/>
       </div>
       </Router>
     );

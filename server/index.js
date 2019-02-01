@@ -16,7 +16,7 @@ massive(CONNECTION_STRING).then((db)=> {
     console.log('DB Connected!')
     app.set('db', db)
 });
-
+//Product endpoints
 app.get('/api/products/', (req, res) => {
     const dbInstance = req.app.get('db');
     dbInstance.getProducts()
@@ -38,7 +38,7 @@ app.get('/api/product/:productcode', (req, res)=> {
         res.status(500).send(err)
     })
 })
-
+//Add User
 app.post('/api/users/', (req, res)=> {
     let {userid, email, firstname, lastname, phone} = req.body;
     req.app.get('db').addUser([userid, email, firstname, lastname, phone]).then(ok=> {
@@ -48,7 +48,16 @@ app.post('/api/users/', (req, res)=> {
         res.status(500).send(err)
     })
 })
-
+//Cart
+app.get('/api/cart/', (req, res)=> {
+    dbInstance=req.app.get('db');
+    dbInstance.getUserCart().then(productsincart=> {
+        res.status(200).send(productsincart)
+    }).catch(err=> {
+        console.log(err)
+        res.status(500).send(err)
+    })
+})
 app.listen(SERVER_PORT, ()=> {
     console.log(`Magic is happening on port: ${SERVER_PORT}`)
 });
