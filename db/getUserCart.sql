@@ -1,1 +1,1 @@
-select productsincart from cart;
+select  p.productname, p.productcode, p.image, p.price from (select unnest(productsincart) as productsincart from cart) c inner join products p on c.productsincart = p.productcode;
