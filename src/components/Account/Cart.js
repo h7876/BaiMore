@@ -25,7 +25,7 @@ getCart(){
     render(){
         let item = this.state.cart.map((el, i)=> {
             return(
-                <div key={i+el}>{el.productname}</div>
+                <div key={i+el}>{el.productname}<br/>{el.quantity}</div>
             )
         })
         return(

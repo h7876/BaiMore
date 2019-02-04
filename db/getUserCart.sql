@@ -1,1 +1,1 @@
-select  p.productname, p.productcode, p.image, p.price from (select unnest(productsincart) as productsincart from cart) c inner join products p on c.productsincart = p.productcode;
+select p.productname, p.productcode, c.quantity from (select unnest(productsincart[1:array_length(productsincart,1)][2:2]) as quantity, unnest(productsincart[1:array_length(productsincart, 1)][1]) as productcode from cart) c inner join products p on c.productcode = p.productcode;
