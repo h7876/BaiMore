@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Navbar from '../Navbar/Navbar';
+import cart from './cart.css'
 
 class Cart extends Component {
     componentDidMount(){
@@ -23,13 +25,44 @@ getCart(){
 }
 
     render(){
-        let item = this.state.cart.map((el, i)=> {
+        let productname = this.state.cart.map((el, i)=> {
             return(
-                <div key={i+el}>{el.productname}<br/>{el.quantity}</div>
-            )
-        })
+                <div key={i+el}>
+                    <div className="productname">{el.productname}</div> 
+                </div>
+                )})
+        let quantity = this.state.cart.map((el, i)=> {
+            return(
+                <div key={i+el}>
+                    <div className="quantity">{el.quantity}</div> 
+                </div>
+                )})
+        let price = this.state.cart.map((el, i)=> {
+            return(
+                <div key={i+el}>
+                    <div className="productprice">{el.price}</div> 
+                </div>
+                )})
         return(
-            <div>{item}</div>
+            <div>
+                <Navbar/>
+                   
+                        <div className="productflex">
+                            <div className="productnamecolumn" >
+                                <h3>Product:</h3><br/>
+                                {productname}
+                            </div>
+                            <div className="quantitycolumn" >
+                             <h3>Quantity:</h3><br/>
+                                {quantity}
+                            </div>
+                            <div className="productpricecolumn" >
+                            <h3>Price:</h3><br/>
+                            {price}
+                            </div>
+                        </div>
+                    
+            </div>
         )
     }
 }

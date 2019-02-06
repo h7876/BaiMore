@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import base from '../../Base';
 import firebase from 'firebase';
 import {auth} from '../Firebase/firebase';
 import axios from 'axios';

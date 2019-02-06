@@ -8,7 +8,6 @@ class AuthOptions extends Component{
         this.authCheck();
       }
     componentDidMount(){
-        
     }
     constructor(){
         super();
@@ -29,6 +28,7 @@ class AuthOptions extends Component{
             var isAnonymous = user.isAnonymous;
             var uid = user.uid;
             var providerData = user.providerData;
+            console.log(email)
             this.setState({uid:uid}, (()=> this.forceUpdate()))
           } else {
             
