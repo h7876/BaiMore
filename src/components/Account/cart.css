@@ -28,9 +28,12 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    padding-left: 30px;
-    padding-right: 30px;
+    /* padding-left: 30px;
+    padding-right: 30px; */
     padding-bottom: 10px;
+    /* border: 0 solid #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000; */
 }
 .productpricecolumn {
     display: flex;
@@ -38,11 +41,19 @@
     flex-direction: column;
 }
 .productname {
-    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 11px;
+    text-decoration: none;
+    border-bottom: 1px solid black;
 }
 .quantity {
     padding-bottom: 8px;
+    border-bottom: 1px solid black;
+    padding-top: 10px;
 }
 .productprice {
-    padding-bottom: 9px;
+    padding-bottom: 8px;
+    padding-top: 10px;
+    border-bottom: 1px solid black;
+
 }
