@@ -29,6 +29,12 @@ import product from './product.css';
             this.setState({product: req.data[0]})
         })
     }
+
+    addToCart(){
+        let productcode = this.props.match.params.productcode;
+
+    }
+
     topOfPage(){
             window.scrollTo(0, 0);
     }

@@ -57,7 +57,29 @@ app.get('/api/cart/', (req, res)=> {
         console.log(err)
         res.status(500).send(err)
     })
+
+app.get('/api/cartid/:userid',(req, res)=> {
+    const dbInstance = req.app.get('db');
+    let userid = req.params.userid
+    dbInstance.getCartId([userid]).then(cartid=> {
+        res.status(200).send(cartid)
+    }).catch(err=> {
+        console.log(err)
+        res.status(500).send(err)
+    })
+})
+
+app.post('/api/cart/:cartid', (req, res)=> {
+    const cartid = req.params.productcode
+    const {productcode, quantity} = req.body;
+    req.app.get('db').addItemToCart([productcode, quantity, cartid]).then(ok=> {
+        res.sendStatus(200);
+    }).catch(err=> {
+        console.log(err)
+        res.status(500).send(err)
+    })
+})
 })
 app.listen(SERVER_PORT, ()=> {
-    console.log(`Magic is happening on port: ${SERVER_PORT}`)
+    console.log(`Things are happening on port: ${SERVER_PORT}`)
 });
