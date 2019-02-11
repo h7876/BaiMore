@@ -40,18 +40,18 @@
     position: relative;
     flex-direction: column;
 }
-.productname {
+.cartproductname {
     padding-top: 10px;
     padding-bottom: 11px;
     text-decoration: none;
     border-bottom: 1px solid black;
 }
-.quantity {
+.cartquantity {
     padding-bottom: 8px;
     border-bottom: 1px solid black;
     padding-top: 10px;
 }
-.productprice {
+.cartproductprice {
     padding-bottom: 8px;
     padding-top: 10px;
     border-bottom: 1px solid black;

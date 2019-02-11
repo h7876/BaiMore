@@ -28,19 +28,19 @@ getCart(){
         let productname = this.state.cart.map((el, i)=> {
             return(
                 <div key={i+el}>
-                    <div className="productname">{el.productname}</div> 
+                    <div className="cartproductname">{el.productname}</div> 
                 </div>
                 )})
         let quantity = this.state.cart.map((el, i)=> {
             return(
                 <div key={i+el}>
-                    <div className="quantity">{el.quantity}</div> 
+                    <div className="cartquantity">{el.quantity}</div> 
                 </div>
                 )})
         let price = this.state.cart.map((el, i)=> {
             return(
                 <div key={i+el}>
-                    <div className="productprice">{el.price}</div> 
+                    <div className="cartproductprice">{el.price}</div> 
                 </div>
                 )})
         return(

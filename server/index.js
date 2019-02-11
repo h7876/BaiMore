@@ -13,8 +13,9 @@ const app = express();
 app.use(bodyParser.json());
 
 massive(CONNECTION_STRING).then((db)=> {
+    db.reload().then((db)=> {app.set('db', db)})
     console.log('DB Connected!')
-    app.set('db', db)
+    
 });
 //Product endpoints
 app.get('/api/products/', (req, res) => {
@@ -57,10 +58,11 @@ app.get('/api/cart/', (req, res)=> {
         console.log(err)
         res.status(500).send(err)
     })
+})
 
 app.get('/api/cartid/:userid',(req, res)=> {
-    const dbInstance = req.app.get('db');
-    let userid = req.params.userid
+     dbInstance = req.app.get('db');
+     userid = req.params.userid
     dbInstance.getCartId([userid]).then(cartid=> {
         res.status(200).send(cartid)
     }).catch(err=> {
@@ -68,6 +70,7 @@ app.get('/api/cartid/:userid',(req, res)=> {
         res.status(500).send(err)
     })
 })
+
 
 app.post('/api/cart/:cartid', (req, res)=> {
     const cartid = req.params.productcode
@@ -79,7 +82,7 @@ app.post('/api/cart/:cartid', (req, res)=> {
         res.status(500).send(err)
     })
 })
-})
+
 app.listen(SERVER_PORT, ()=> {
     console.log(`Things are happening on port: ${SERVER_PORT}`)
 });
