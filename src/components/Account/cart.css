@@ -42,7 +42,7 @@
 }
 .cartproductname {
     padding-top: 10px;
-    padding-bottom: 11px;
+    padding-bottom: 8px;
     text-decoration: none;
     border-bottom: 1px solid black;
 }
@@ -51,9 +51,28 @@
     border-bottom: 1px solid black;
     padding-top: 10px;
 }
+.editquantitycolumn {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-top: 85px;
+}
+.editquantitycolumn button {
+    margin-top:10px;
+    margin-bottom:8px;
+}
+.deletebuttoncolumn {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-top: 85px;
+}
+.deletebuttoncolumn button {
+    margin-top:10px;
+    margin-bottom:8px;
+}
 .cartproductprice {
     padding-bottom: 8px;
     padding-top: 10px;
     border-bottom: 1px solid black;
-
 }

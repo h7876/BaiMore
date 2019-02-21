@@ -12,7 +12,9 @@ class Cart extends Component {
         super();
         this.state = {
             cart: [],
-            user: []
+            user: [],
+            edit: false,
+            cartitemid: []
         }
         this.getCart = this.getCart.bind(this);
     }
@@ -34,34 +36,51 @@ getCart(){
         let quantity = this.state.cart.map((el, i)=> {
             return(
                 <div key={i+el}>
-                    <div className="cartquantity">{el.quantity}</div> 
+                    <div className="cartquantity">{el.quantity}
+                    </div>   
                 </div>
                 )})
         let price = this.state.cart.map((el, i)=> {
             return(
                 <div key={i+el}>
-                    <div className="cartproductprice">{el.price}</div> 
+                    <div className="cartproductprice">${el.price}</div> 
                 </div>
                 )})
+        let quantitybutton = this.state.cart.map((el, i)=> {
+            return (
+                <div key={el+i}><button>Edit Quantity</button></div>
+            )
+        })
+        let deletebutton = this.state.cart.map((el, i)=> {
+            return (
+                <div key={el + i}><button>Remove</button></div>
+            )
+        })
+        let savebutton = this.state.cart.map((el, i)=> {
+            return (
+                <div key={el + i}><button>Save</button></div>
+                
+            )
+        })
         return(
             <div>
                 <Navbar/>
-                   
                         <div className="productflex">
                             <div className="productnamecolumn" >
                                 <h3>Product:</h3><br/>
                                 {productname}
                             </div>
+                            <div className="productpricecolumn" >
+                                <h3>Price:</h3><br/>
+                                {price}
+                            </div>
                             <div className="quantitycolumn" >
-                             <h3>Quantity:</h3><br/>
+                                <h3>Quantity:</h3><br/>
                                 {quantity}
                             </div>
-                            <div className="productpricecolumn" >
-                            <h3>Price:</h3><br/>
-                            {price}
-                            </div>
+                            <div className="editquantitycolumn">{quantitybutton}</div>
+                            <div className="deletebuttoncolumn">{deletebutton}</div>
                         </div>
-                    
             </div>
         )
     }

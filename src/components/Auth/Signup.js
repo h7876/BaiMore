@@ -24,11 +24,11 @@ class Signup extends Component {
             email,
             password,
           } = this.state;
-
+        let cartid = Math.floor(10000000 + Math.random() * 90000000);
         firebase.auth().createUserWithEmailAndPassword(email, password).then((authUser)=> {
                 let {email, firstname, lastname, phone} = this.state;
                 let userid = authUser.user.uid;
-                axios.post('/api/users/', {userid, email, firstname, lastname, phone}).then(()=> {
+                axios.post('/api/users/', {userid, email, firstname, lastname, phone, cartid}).then(()=> {
                     window.location.replace('/')
                 })
         }).catch(function(error) {

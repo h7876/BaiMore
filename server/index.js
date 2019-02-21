@@ -41,8 +41,8 @@ app.get('/api/product/:productcode', (req, res)=> {
 })
 //Add User
 app.post('/api/users/', (req, res)=> {
-    let {userid, email, firstname, lastname, phone} = req.body;
-    req.app.get('db').addUser([userid, email, firstname, lastname, phone]).then(ok=> {
+    let {userid, email, firstname, lastname, phone, cartid} = req.body;
+    req.app.get('db').addUser([userid, email, firstname, lastname, phone, cartid]).then(ok=> {
         res.sendStatus(200);
     }).catch(err=> {
         console.log(err)
