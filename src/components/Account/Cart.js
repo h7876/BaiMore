@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
 import cart from './cart.css'
-
 class Cart extends Component {
-    componentDidMount(){
-        this.getCart();
-
-    }
-    constructor(){
-        super();
+   
+    constructor(props){
+        super(props);
         this.state = {
             cart: [],
             user: [],
@@ -19,8 +15,13 @@ class Cart extends Component {
         this.getCart = this.getCart.bind(this);
     }
 
+    componentDidMount(){
+        this.getCart();
+        console.log(this.props)
+
+    }
 getCart(){
-    axios.get('/api/cart/').then((req)=> {
+    axios.get('/api/cart/2617').then((req)=> {
         console.log(req.data)
         this.setState({cart: req.data})
     }).then(()=> console.log(this.state.cart))

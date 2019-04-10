@@ -49,17 +49,18 @@ app.post('/api/users/', (req, res)=> {
         res.status(500).send(err)
     })
 })
-//Cart
-app.get('/api/cart/', (req, res)=> {
+//Get a cart
+app.get('/api/cart/:cartid', (req, res)=> {
+    cartid = req.params.cartid
     dbInstance=req.app.get('db');
-    dbInstance.getUserCart().then(productsincart=> {
+    dbInstance.getSingleUserCart([cartid]).then(productsincart=> {
         res.status(200).send(productsincart)
     }).catch(err=> {
         console.log(err)
         res.status(500).send(err)
     })
 })
-
+//Get Cart ID
 app.get('/api/cartid/:userid',(req, res)=> {
      dbInstance = req.app.get('db');
      userid = req.params.userid
@@ -71,10 +72,10 @@ app.get('/api/cartid/:userid',(req, res)=> {
     })
 })
 
-
+//add an item to a user's cart
 app.post('/api/cart/:cartid', (req, res)=> {
     const cartid = req.params.productcode
-    const {productcode, quantity} = req.body;
+    let {productcode, quantity} = req.body
     req.app.get('db').addItemToCart([productcode, quantity, cartid]).then(ok=> {
         res.sendStatus(200);
     }).catch(err=> {
