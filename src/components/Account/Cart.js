@@ -20,6 +20,8 @@ class Cart extends Component {
         console.log(this.props)
 
     }
+
+    //Replace 2617 with cartid
 getCart(){
     axios.get('/api/cart/2617').then((req)=> {
         console.log(req.data)
