@@ -7,6 +7,7 @@ import product from './product.css';
 
     componentDidMount(){
         this.getProduct();
+        console.log(this.props)
     }
     componentWillMount(){
         this.topOfPage();

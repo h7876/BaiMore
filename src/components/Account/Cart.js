@@ -4,26 +4,28 @@ import Navbar from '../Navbar/Navbar';
 import cart from './cart.css'
 class Cart extends Component {
    
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             cart: [],
             user: [],
-            edit: false,
-            cartitemid: []
+            edit: false
         }
         this.getCart = this.getCart.bind(this);
     }
-
     componentDidMount(){
         this.getCart();
         console.log(this.props)
 
     }
-
-    //Replace 2617 with cartid
+    componentDidUpdate(prevProps) {
+        if (this.props.cartid !== prevProps.cartid) {
+          this.getCart();
+        }
+      }
+    
 getCart(){
-    axios.get('/api/cart/2617').then((req)=> {
+    axios.get(`/api/cart/${this.props.cartid}`).then((req)=> {
         console.log(req.data)
         this.setState({cart: req.data})
     }).then(()=> console.log(this.state.cart))

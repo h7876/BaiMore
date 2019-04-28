@@ -35,13 +35,13 @@ class App extends Component {
     firebase.auth().onAuthStateChanged((user)=> {
       if (user) {
         // User is signed in.
-        var displayName = user.displayName;
-        var email = user.email;
-        var emailVerified = user.emailVerified;
-        var photoURL = user.photoURL;
-        var isAnonymous = user.isAnonymous;
+        //var displayName = user.displayName;
+       // var email = user.email;
+        //var emailVerified = user.emailVerified;
+        //var photoURL = user.photoURL;
+       // var isAnonymous = user.isAnonymous;
         var uid = user.uid;
-        var providerData = user.providerData;
+        //var providerData = user.providerData;
         console.log('I AM ON THE ROOT LEVEL ' + uid)
         this.setState({uid:uid}, (()=> this.getCartId(uid)))
       } else {
@@ -55,10 +55,10 @@ class App extends Component {
       <Router>
       <div className="App">
         <Route exact path="/" component={Home}/>
-        <Route path='/product/:productcode' component={Product}/>
+        <Route path='/product/:productcode' component={(props) => <Product {...props} cartid={this.state.cartid}/>}/>
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
-        <Route path='/cart' render={(props) => <Cart {...props} cartID={this.state.uid}/>}/>
+        <Route path='/cart/' component={(props) => <Cart {...props} cartid={this.state.cartid}/>}/>
       </div>
       </Router>
     );
