@@ -7,7 +7,7 @@ import product from './product.css';
 
     componentDidMount(){
         this.getProduct();
-        console.log(this.props)
+        console.log(this.props.cartid)
     }
     componentWillMount(){
         this.topOfPage();
@@ -17,10 +17,11 @@ import product from './product.css';
         super();
         this.state ={
             product: [],
-            quantity: ""
+            quantity: {}
         }
         this.getProduct = this.getProduct.bind(this);
         this.topOfPage = this.topOfPage.bind(this);
+        this.addToCart = this.addToCart.bind(this);
     }
 
 
@@ -32,8 +33,10 @@ import product from './product.css';
     }
 
     addToCart(){
-        let productcode = this.props.match.params.productcode;
-
+        let productcode = parseInt(this.props.match.params.productcode);
+        let cartid = this.props.cartid;
+        let quantity = parseInt(this.state.quantity)
+        axios.post(`/api/cart/${cartid}`, { productcode , quantity }).then(()=> {alert('Added to Cart!')}).catch(error => {console.log(error)});
     }
 
     topOfPage(){
@@ -62,7 +65,7 @@ import product from './product.css';
                             <div className="singleproductprice">
                             <div className="singleline">
                                 <p>${this.state.product.price}</p>
-                               <input type="text" value={this.state.quantity}  maxLength="4" onChange={event => this.setState(updateByPropertyName('quantity', event.target.value))}></input><button>Add To Cart</button>
+                               <input type="number" value={this.state.quantity}  maxLength="4" onChange={event => this.setState(updateByPropertyName('quantity', event.target.value))}></input><button onClick={()=>{this.addToCart()}}>Add To Cart</button>
                                </div>
                             </div>
                         </div>

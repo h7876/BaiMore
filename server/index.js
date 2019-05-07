@@ -74,7 +74,7 @@ app.get('/api/cartid/:userid',(req, res)=> {
 
 //add an item to a user's cart
 app.post('/api/cart/:cartid', (req, res)=> {
-    const cartid = req.params.productcode
+    const cartid = req.params.cartid
     let {productcode, quantity} = req.body
     req.app.get('db').addItemToCart([productcode, quantity, cartid]).then(ok=> {
         res.sendStatus(200);
