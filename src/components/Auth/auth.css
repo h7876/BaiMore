@@ -11,6 +11,7 @@
     color: white;
     position: fixed;
     border: none;
+    cursor: pointer;
 
 }
 .signup{
@@ -26,6 +27,7 @@
     color: white;
     position: fixed;
     border: none;
+    cursor: pointer;
 }
 .logout{
     position: absolute;
@@ -40,4 +42,20 @@
     color: white;
     position: fixed;
     border: none;
+    cursor: pointer;
+}
+.cart{
+    position: absolute;
+    top:10px;
+    right:210px;
+    z-index: 4;
+}
+.cart button{
+    height: 30px;
+    width: 90px;
+    background-color: black;
+    color: white;
+    position: fixed;
+    border: none;
+    cursor: pointer;
 }

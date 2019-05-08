@@ -48,9 +48,13 @@ class AuthOptions extends Component{
             <div>
                 {this.state.uid ?
                  <div>
+                     <Link to='/cart'>
+                 <div className="cart">
+                    <button>Cart</button>
+                </div></Link>
                  <div className="logout">
-     <button onClick={this.signUserOut}>Log Out</button>
-     </div></div>
+                    <button onClick={this.signUserOut}>Log Out</button>
+                </div></div>
                 :
                 <div>
                 <Link to='/login'>

@@ -36,7 +36,7 @@ import product from './product.css';
         let productcode = parseInt(this.props.match.params.productcode);
         let cartid = this.props.cartid;
         let quantity = parseInt(this.state.quantity)
-        axios.post(`/api/cart/${cartid}`, { productcode , quantity }).then(()=> {alert('Added to Cart!')}).catch(error => {console.log(error)});
+        axios.post(`/api/cart/${cartid}`, { productcode , quantity }).then(()=> {alert('Added to Cart!')}).then(()=> {window.location.href = '/cart'}).catch(error => {console.log(error)});
     }
 
     topOfPage(){
