@@ -49,6 +49,16 @@ app.post('/api/users/', (req, res)=> {
         res.status(500).send(err)
     })
 })
+//Create a users's cart
+app.post('/api/users/addcart',(req, res)=> {
+    let {cartid} = req.body;
+    req.app.get('db').addCart([cartid]).then(ok=> {
+        res.sendStatus(200);
+    }).catch(err=> {
+        console.log(err)
+        res.status(500).send(err)
+    })
+})
 //Get a cart
 app.get('/api/cart/:cartid', (req, res)=> {
     cartid = req.params.cartid

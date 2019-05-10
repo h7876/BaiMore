@@ -29,7 +29,9 @@ class Signup extends Component {
                 let {email, firstname, lastname, phone} = this.state;
                 let userid = authUser.user.uid;
                 axios.post('/api/users/', {userid, email, firstname, lastname, phone, cartid}).then(()=> {
-                    window.location.replace('/')
+                    axios.post('/api/users/addcart', {cartid}).then(()=> {
+                        window.location.replace('/')
+                    })
                 })
         }).catch(function(error) {
             // Handle Errors here.

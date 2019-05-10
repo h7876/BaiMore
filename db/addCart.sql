@@ -1,0 +1,1 @@
+insert into cart (cartid) values ($1);
