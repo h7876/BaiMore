@@ -86,7 +86,16 @@ app.get('/api/cartid/:userid',(req, res)=> {
 app.post('/api/cart/:cartid', (req, res)=> {
     const cartid = req.params.cartid
     let {productcode, quantity} = req.body
-    req.app.get('db').addItemToCart([productcode, quantity, cartid]).then(ok=> {
+    req.app.get('db').addItemToCart([quantity, cartid, productcode]).then(ok=> {
+        res.sendStatus(200);
+    }).catch(err=> {
+        console.log(err)
+        res.status(500).send(err)
+    })
+})
+app.delete('/api/cart/deleteitem', (req, res)=> {
+    let {productcode, cartid} = req.body
+    req.app.get('db').deleteItemFromCart([cartid, productcode]).then(ok=>{
         res.sendStatus(200);
     }).catch(err=> {
         console.log(err)

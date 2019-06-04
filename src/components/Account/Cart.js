@@ -57,6 +57,7 @@ getCart(){
             )
         })
         let deletebutton = this.state.cart.map((el, i)=> {
+            console.log({el})
             return (
                 <div key={el + i}><button>Remove</button></div>
             )
