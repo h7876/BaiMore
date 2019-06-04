@@ -1,0 +1,1 @@
+delete from cart where cartid = $1 and productcode = $2;

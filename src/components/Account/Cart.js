@@ -12,6 +12,7 @@ class Cart extends Component {
             edit: false
         }
         this.getCart = this.getCart.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
     componentDidMount(){
         this.getCart();
@@ -23,12 +24,22 @@ class Cart extends Component {
           this.getCart();
         }
       }
-    
+//Retrieves all the items from the logged in user's cart    
 getCart(){
     axios.get(`/api/cart/${this.props.cartid}`).then((req)=> {
         console.log(req.data)
         this.setState({cart: req.data})
     }).then(()=> console.log(this.state.cart))
+}
+//Deletes item from cart entirely
+deleteItem(el){
+    console.log(el)
+    let cartid = parseInt(this.props.cartid)
+    let productcode = parseInt(el.productcode)
+    axios.delete(`/api/cart/deleteitem/${productcode}/${cartid}`).then((req)=> {
+        alert('Item Deleted!')
+        this.getCart()
+    })
 }
 
     render(){
@@ -57,9 +68,8 @@ getCart(){
             )
         })
         let deletebutton = this.state.cart.map((el, i)=> {
-            console.log({el})
             return (
-                <div key={el + i}><button>Remove</button></div>
+                <div key={el + i}><button onClick={()=>this.deleteItem(el)}>Remove</button></div>
             )
         })
         let savebutton = this.state.cart.map((el, i)=> {

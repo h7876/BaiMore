@@ -93,12 +93,12 @@ app.post('/api/cart/:cartid', (req, res)=> {
         res.status(500).send(err)
     })
 })
-app.delete('/api/cart/deleteitem', (req, res)=> {
-    let {productcode, cartid} = req.body
+app.delete('/api/cart/deleteitem/:productcode/:cartid', (req, res)=> {
+    let productcode = req.params.productcode
+    let cartid = req.params.cartid
     req.app.get('db').deleteItemFromCart([cartid, productcode]).then(ok=>{
         res.sendStatus(200);
     }).catch(err=> {
-        console.log(err)
         res.status(500).send(err)
     })
 })
