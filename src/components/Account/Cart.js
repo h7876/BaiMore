@@ -1,7 +1,12 @@
+/* TODO:
+Fix ordering after item quantity is updated
+Style buttons and layout for buttons and column headers
+*/
 import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
 import cart from './cart.css'
+import { app } from 'firebase';
 class Cart extends Component {
    
     constructor(){
@@ -9,10 +14,15 @@ class Cart extends Component {
         this.state = {
             cart: [],
             user: [],
-            edit: false
+            edit: false,
+            itemtoedit: '',
+            newquantity: []
         }
         this.getCart = this.getCart.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
+        this.editToggle = this.editToggle.bind(this);
+        this.handleQuantityChange = this.handleQuantityChange.bind(this);
+        this.updateItemQuantity = this.updateItemQuantity.bind(this);
     }
     componentDidMount(){
         this.getCart();
@@ -24,6 +34,18 @@ class Cart extends Component {
           this.getCart();
         }
       }
+//Toggles quantity to be an input field
+editToggle(el){
+    this.setState({edit: !this.state.edit, itemtoedit: el.productcode})
+}
+cancelEdit(){
+    this.setState({edit:!this.state.edit})
+}
+//handles the new quantity input
+handleQuantityChange(event){
+    this.setState({newquantity: event.target.value})
+}
+
 //Retrieves all the items from the logged in user's cart    
 getCart(){
     axios.get(`/api/cart/${this.props.cartid}`).then((req)=> {
@@ -41,6 +63,15 @@ deleteItem(el){
         this.getCart()
     })
 }
+//Updates quantity for item in cart
+updateItemQuantity(){
+    let quantity = parseInt(this.state.newquantity);
+    let productcode = parseInt(this.state.itemtoedit);
+    axios.put(`/api/cart/${this.props.cartid}`, {quantity, productcode}).then(()=> {
+        alert('Quantity Updated')
+        this.setState({edit:false})
+    })
+}
 
     render(){
         let productname = this.state.cart.map((el, i)=> {
@@ -52,10 +83,18 @@ deleteItem(el){
         let quantity = this.state.cart.map((el, i)=> {
             return(
                 <div key={i+el}>
-                    <div className="cartquantity">{el.quantity}
+                    {this.state.edit == true && this.state.itemtoedit == el.productcode ?
+                    <div className="cartquantity">
+                      <input placeholder={el.quantity} onChange={this.handleQuantityChange}></input> 
                     </div>   
+                    : 
+                    <div className="cartquantity">
+                        {el.quantity}
+                    </div>  
+                    }
                 </div>
-                )})
+                )
+            })
         let price = this.state.cart.map((el, i)=> {
             return(
                 <div key={i+el}>
@@ -64,20 +103,32 @@ deleteItem(el){
                 )})
         let quantitybutton = this.state.cart.map((el, i)=> {
             return (
-                <div key={el+i}><button>Edit Quantity</button></div>
+                <div key={el+i}>
+                    <button onClick={()=> {this.editToggle(el)}}>Edit Quantity</button>
+                </div>
             )
         })
         let deletebutton = this.state.cart.map((el, i)=> {
             return (
-                <div key={el + i}><button onClick={()=>this.deleteItem(el)}>Remove</button></div>
+          
+                <div key={el + i}>
+                    {this.state.edit == true ? 
+                    <button onClick={()=>this.cancelEdit()}>Cancel</button>
+                    :
+                    <button onClick={()=>this.deleteItem(el)}>Remove</button>
+                    }
+                    </div>
+               
             )
         })
         let savebutton = this.state.cart.map((el, i)=> {
             return (
-                <div key={el + i}><button>Save</button></div>
-                
+                <div key={el + i}>
+                    <button onClick={()=>this.updateItemQuantity()}>Save</button>
+                </div>
             )
         })
+
         return(
             <div>
                 <Navbar/>
@@ -94,9 +145,15 @@ deleteItem(el){
                                 <h3>Quantity:</h3><br/>
                                 {quantity}
                             </div>
-                            <div className="editquantitycolumn">{quantitybutton}</div>
-                            <div className="deletebuttoncolumn">{deletebutton}</div>
-                        </div>
+                            
+                            {this.state.edit ?
+                          
+                            <div className="editquantitycolumn"> {savebutton}</div>
+                            :
+                            <div className="editquantitycolumn"> {quantitybutton}</div> }
+                            <div className="deletebuttoncolumn">{deletebutton}</div> 
+                            
+                        </div> 
             </div>
         )
     }
