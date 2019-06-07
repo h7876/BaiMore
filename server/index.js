@@ -17,7 +17,7 @@ massive(CONNECTION_STRING).then((db)=> {
     console.log('DB Connected!')
     
 });
-//Product endpoints
+//Get a list of all products
 app.get('/api/products/', (req, res) => {
     const dbInstance = req.app.get('db');
     dbInstance.getProducts()
@@ -28,7 +28,7 @@ app.get('/api/products/', (req, res) => {
     res.status(500).send(err)
 });
 })
-
+//Get a single product
 app.get('/api/product/:productcode', (req, res)=> {
     const productcode = req.params.productcode
     const dbInstance = req.app.get('db');
@@ -93,6 +93,20 @@ app.post('/api/cart/:cartid', (req, res)=> {
         res.status(500).send(err)
     })
 })
+
+//Update an item's quantity in the cart
+app.put('/api/cart/:cartid', (req, res)=> {
+    const cartid = req.params.cartid
+    let {productcode, quantity} = req.body
+    req.app.get('db').updateCartItemQuantity([quantity, cartid, productcode]).then(ok => {
+        res.sendStatus(200);
+    }).catch(err=> {
+        console.log(err)
+        res.status(500).send(err)
+    })
+})
+
+//Remove an item from a user's cart
 app.delete('/api/cart/deleteitem/:productcode/:cartid', (req, res)=> {
     let productcode = req.params.productcode
     let cartid = req.params.cartid
