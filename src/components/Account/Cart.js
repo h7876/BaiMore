@@ -69,7 +69,7 @@ updateItemQuantity(){
     let productcode = parseInt(this.state.itemtoedit);
     axios.put(`/api/cart/${this.props.cartid}`, {quantity, productcode}).then(()=> {
         alert('Quantity Updated')
-        this.setState({edit:false})
+        this.setState({edit:false}, this.getCart())
     })
 }
 
@@ -104,7 +104,10 @@ updateItemQuantity(){
         let quantitybutton = this.state.cart.map((el, i)=> {
             return (
                 <div key={el+i}>
-                    <button onClick={()=> {this.editToggle(el)}}>Edit Quantity</button>
+                    {this.state.edit == true && this.state.itemtoedit == el.productcode ?
+                    <button onClick={()=>this.updateItemQuantity()}>Save</button> 
+                    :
+                    <button onClick={()=> {this.editToggle(el)}}>Edit Quantity</button> }
                 </div>
             )
         })
@@ -112,7 +115,7 @@ updateItemQuantity(){
             return (
           
                 <div key={el + i}>
-                    {this.state.edit == true ? 
+                    {this.state.edit == true && this.state.itemtoedit == el.productcode ? 
                     <button onClick={()=>this.cancelEdit()}>Cancel</button>
                     :
                     <button onClick={()=>this.deleteItem(el)}>Remove</button>
@@ -145,12 +148,7 @@ updateItemQuantity(){
                                 <h3>Quantity:</h3><br/>
                                 {quantity}
                             </div>
-                            
-                            {this.state.edit ?
-                          
-                            <div className="editquantitycolumn"> {savebutton}</div>
-                            :
-                            <div className="editquantitycolumn"> {quantitybutton}</div> }
+                            <div className="editquantitycolumn"> {quantitybutton}</div>
                             <div className="deletebuttoncolumn">{deletebutton}</div> 
                             
                         </div> 
