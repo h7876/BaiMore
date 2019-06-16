@@ -4,10 +4,12 @@ import Home from './components/Home/Home';
 import Product from './components/Productpage/Product'
 import Signup from './components/Auth/Signup'
 import Login from './components/Auth/Login'
-import Cart from './components/Account/Cart'
+import Cart from './components/Cart/Cart'
+import Checkout from './components/Checkout/Checkout'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import firebase from 'firebase';
 import axios from 'axios';
+import {Elements, StripeProvider} from 'react-stripe-elements'
 
 
 class App extends Component {
@@ -58,7 +60,11 @@ class App extends Component {
         <Route path='/product/:productcode' component={(props) => <Product {...props} cartid={this.state.cartid}/>}/>
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
-        <Route path='/cart/' component={(props) => <Cart {...props} cartid={this.state.cartid}/>}/>
+        <Route path='/cart/' component={(props) => <Cart {...props} cartid={this.state.cartid}/>}/><StripeProvider apiKey="pk_test_AH1aYOINzkuPuos8rpEG3IJV00uGd3ELkp">
+        <Elements>
+        <Route path='/checkout' component={Checkout}/>
+        </Elements>
+        </StripeProvider>
       </div>
       </Router>
     );

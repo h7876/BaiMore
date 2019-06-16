@@ -6,11 +6,14 @@ const express = require('express')
 
 const {
     SERVER_PORT,
-    CONNECTION_STRING
+    CONNECTION_STRING,
+    STRIPE_SK
 } = process.env;
 
 const app = express();
 app.use(bodyParser.json());
+app.use(bodyParser.text());
+const stripe = require("stripe")(STRIPE_SK);
 
 massive(CONNECTION_STRING).then((db)=> {
     db.reload().then((db)=> {app.set('db', db)})
@@ -116,6 +119,22 @@ app.delete('/api/cart/deleteitem/:productcode/:cartid', (req, res)=> {
         res.status(500).send(err)
     })
 })
+
+//Stripe checkout
+app.post("/charge", async (req, res) => {
+    try {
+      let {status} = await stripe.charges.create({
+        amount: 2000,
+        currency: "usd",
+        description: "An example charge",
+        source: req.body
+      });
+      res.json({status});
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
+  
 
 app.listen(SERVER_PORT, ()=> {
     console.log(`Things are happening on port: ${SERVER_PORT}`)
