@@ -2,28 +2,27 @@ import React, { Component } from 'react';
 import checkout from './checkout.css'
 import Navbar from '../Navbar/Navbar';
 import {CardElement, injectStripe} from 'react-stripe-elements';
+import axios from 'axios';
 
 class Checkout extends Component {
     constructor(props){
         super(props)
         this.state = {
-            complete: false
+            complete: false,
+            amount: 2000,
+            currency: "usd",
+            description: "BaiMore Test"
         }
         this.submit = this.submit.bind(this);
     }
 
-    async submit(ev) {
+   async submit(ev){
         let { token } = await this.props.stripe.createToken({name: "Name"});
-        let response = await fetch("/charge", {
-          method: "POST",
-          headers: {"Content-Type": "text/plain"},
-          body: token.id
-        });
-      
-        if (response.ok) {
-            this.setState({complete:true})
-        }
-      }
+        let {amount, currency, description} = this.state;
+        axios.post('/charge', {token, amount, currency, description}).then(()=> {
+            this.setState({complete: true})
+        })
+    }
 
     render(){
         if (this.state.complete) return <h1>Purchase Complete</h1>;

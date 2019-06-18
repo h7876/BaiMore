@@ -123,11 +123,12 @@ app.delete('/api/cart/deleteitem/:productcode/:cartid', (req, res)=> {
 //Stripe checkout
 app.post("/charge", async (req, res) => {
     try {
+        let {amount, currency, description} = req.body
       let {status} = await stripe.charges.create({
-        amount: 2000,
-        currency: "usd",
-        description: "An example charge",
-        source: req.body
+        amount,
+        currency,
+        description,
+        source: req.body.token.id
       });
       res.json({status});
     } catch (err) {
