@@ -27,12 +27,23 @@ class Checkout extends Component {
     render(){
         if (this.state.complete) return <h1>Purchase Complete</h1>;
         return(
-            
             <div>
-                {/* <Navbar/> */}
+                <Navbar/>
                 <div className="checkout">
+                    <div className="address-flexbox">
+                    <h3>Shipping Address:</h3>
+                    <input placeholder="First Name" type="text"></input>
+                    <input placeholder="Last Name" type="text"></input>
+                    <input placeholder="Email" type="text"></input>
+                    <input placeholder="Address" type="text"></input>
+                    <input placeholder="City" type="text"></input>
+                    <input placeholder="State" type="text"></input>
+                    <input placeholder="Zip" type="number"></input>
+                    
+                    <h3>Payment Details:</h3>
                     <CardElement/>
                     <button onClick={this.submit}>Send</button>
+                    </div>
                 </div>
             </div>
         )
