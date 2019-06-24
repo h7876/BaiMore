@@ -20,6 +20,7 @@
     box-shadow: 0 1px 3px 0 #e6ebf1;
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
+    margin-bottom: 10px;
   }
 
   .checkout input {
@@ -37,6 +38,16 @@
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
     text-align: center;
+  }
+
+  .checkout button {
+    height: 40px;
+    width: 100px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size: 15px;
+    color: white;
+    background-color: black;
   }
 
   .address-flexbox {
@@ -57,7 +68,8 @@
     background-color: #fefde5 !important;
   }
 
-  h3 {
+  checkout h3 {
     font-family: 'Quicksand', sans-serif;
     font-size: 25px;
+    font-weight: 400;
   }

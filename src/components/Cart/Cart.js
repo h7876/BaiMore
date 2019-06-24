@@ -150,8 +150,8 @@ updateItemQuantity(){
                             </div>
                             <div className="editquantitycolumn"> {quantitybutton}</div>
                             <div className="deletebuttoncolumn">{deletebutton}</div> 
-                            
                         </div> 
+                        <button className="checkoutbutton" onClick={()=> {window.location.href = '/checkout'}}>Checkout</button>
             </div>
         )
     }
