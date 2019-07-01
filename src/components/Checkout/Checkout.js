@@ -21,40 +21,40 @@ class Checkout extends Component {
             address_country: "US"
         }
         this.submit = this.submit.bind(this);
-        this.handleName = this.handleName.bind(this);
-        this.handleAddressL1 = this.handleAddressL1.bind(this);
-        this.handleAddressL2 = this.handleAddressL2.bind(this);
-        this.handleAddressCity = this.handleAddressCity.bind(this);
-        this.handleAddressState = this.handleAddressState.bind(this);
-        this.handleAddressZip = this.handleAddressZip.bind(this);
-        this.handleAddressCountry = this.handleAddressCountry.bind(this);
+        // this.handleName = this.handleName.bind(this);
+        // this.handleAddressL1 = this.handleAddressL1.bind(this);
+        // this.handleAddressL2 = this.handleAddressL2.bind(this);
+        // this.handleAddressCity = this.handleAddressCity.bind(this);
+        // this.handleAddressState = this.handleAddressState.bind(this);
+        // this.handleAddressZip = this.handleAddressZip.bind(this);
+        // this.handleAddressCountry = this.handleAddressCountry.bind(this);
     }
 
-    handleName(event) {
-        this.setState({name: event.target.value});
-      }
+    // handleName(event) {
+    //     this.setState({name: event.target.value});
+    //   }
 
-    handleAddressL1(event) {
-        this.setState({address_line1: event.target.value});
-      }
-    handleAddressL2(event) {
-        this.setState({address_line2: event.target.value});
-      }
+    // handleAddressL1(event) {
+    //     this.setState({address_line1: event.target.value});
+    //   }
+    // handleAddressL2(event) {
+    //     this.setState({address_line2: event.target.value});
+    //   }
 
-    handleAddressCity(event) {
-        this.setState({address_city: event.target.value});
-      }
+    // handleAddressCity(event) {
+    //     this.setState({address_city: event.target.value});
+    //   }
 
-      handleAddressState(event) {
-        this.setState({address_state: event.target.value});
-      }
+    //   handleAddressState(event) {
+    //     this.setState({address_state: event.target.value});
+    //   }
 
-    handleAddressZip(event) {
-        this.setState({address_zip: event.target.value});
-      }
-      handleAddressCountry(event) {
-        this.setState({address_country: event.target.value});
-      }
+    // handleAddressZip(event) {
+    //     this.setState({address_zip: event.target.value});
+    //   }
+    //   handleAddressCountry(event) {
+    //     this.setState({address_country: event.target.value});
+    //   }
 
 
    async submit(ev){
@@ -72,6 +72,9 @@ class Checkout extends Component {
     }
 
     render(){
+      const updateByPropertyName = (propertyName, value) => ({
+        [propertyName]: value
+       });
         if (this.state.complete) return <h1>Purchase Complete</h1>;
         return(
             <div>
@@ -79,12 +82,12 @@ class Checkout extends Component {
                 <div className="checkout">
                     <div className="address-flexbox">
                     <h3>Shipping Address:</h3>
-                    <input placeholder="Full Name" type="text" onChange={this.handleName}></input>
-                    <input placeholder="Address Line 1" type="text" onChange={this.handleAddressL1}></input>
-                    <input placeholder="Address Line 2" type="text" onChange={this.handleAddressL2}></input>
-                    <input placeholder="City" type="text" onChange={this.handleAddressCity}></input>
-                    <input placeholder="State" type="text" onChange={this.handleAddressState}></input>
-                    <input placeholder="Zip" type="number" onChange={this.handleAddressZip}></input>
+                    <input placeholder="Full Name" type="text" onChange={event => this.setState(updateByPropertyName('name', event.target.value))}></input>
+                    <input placeholder="Address Line 1" type="text" onChange={event => this.setState(updateByPropertyName('address_line1', event.target.value))}></input>
+                    <input placeholder="Address Line 2" type="text" onChange={event => this.setState(updateByPropertyName('address_line2', event.target.value))}></input>
+                    <input placeholder="City" type="text" onChange={event => this.setState(updateByPropertyName('address_city', event.target.value))}></input>
+                    <input placeholder="State" type="text" onChange={event => this.setState(updateByPropertyName('address_state', event.target.value))}></input>
+                    <input placeholder="Zip" type="number" onChange={event => this.setState(updateByPropertyName('address_zip', event.target.value))}></input>
                     
                     <h3>Payment Details:</h3>
                     <CardElement/>
