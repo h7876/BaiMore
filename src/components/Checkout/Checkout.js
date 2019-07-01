@@ -21,40 +21,7 @@ class Checkout extends Component {
             address_country: "US"
         }
         this.submit = this.submit.bind(this);
-        // this.handleName = this.handleName.bind(this);
-        // this.handleAddressL1 = this.handleAddressL1.bind(this);
-        // this.handleAddressL2 = this.handleAddressL2.bind(this);
-        // this.handleAddressCity = this.handleAddressCity.bind(this);
-        // this.handleAddressState = this.handleAddressState.bind(this);
-        // this.handleAddressZip = this.handleAddressZip.bind(this);
-        // this.handleAddressCountry = this.handleAddressCountry.bind(this);
     }
-
-    // handleName(event) {
-    //     this.setState({name: event.target.value});
-    //   }
-
-    // handleAddressL1(event) {
-    //     this.setState({address_line1: event.target.value});
-    //   }
-    // handleAddressL2(event) {
-    //     this.setState({address_line2: event.target.value});
-    //   }
-
-    // handleAddressCity(event) {
-    //     this.setState({address_city: event.target.value});
-    //   }
-
-    //   handleAddressState(event) {
-    //     this.setState({address_state: event.target.value});
-    //   }
-
-    // handleAddressZip(event) {
-    //     this.setState({address_zip: event.target.value});
-    //   }
-    //   handleAddressCountry(event) {
-    //     this.setState({address_country: event.target.value});
-    //   }
 
 
    async submit(ev){
