@@ -16,7 +16,8 @@ class Cart extends Component {
             user: [],
             edit: false,
             itemtoedit: '',
-            newquantity: []
+            newquantity: [],
+            prices: []
         }
         this.getCart = this.getCart.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
@@ -48,10 +49,15 @@ handleQuantityChange(event){
 
 //Retrieves all the items from the logged in user's cart    
 getCart(){
+    let cart = [];
     axios.get(`/api/cart/${this.props.cartid}`).then((req)=> {
         console.log(req.data)
         this.setState({cart: req.data})
-    }).then(()=> console.log(this.state.cart))
+    }).then(()=> this.state.cart.map((el, i)=> {
+        let price = parseFloat(el.price)
+        cart.push(price)
+        this.setState({prices: cart})
+    }))
 }
 //Deletes item from cart entirely
 deleteItem(el){
@@ -74,6 +80,7 @@ updateItemQuantity(){
 }
 
     render(){
+
         let productname = this.state.cart.map((el, i)=> {
             return(
                 <div key={i+el}>
@@ -124,6 +131,7 @@ updateItemQuantity(){
                
             )
         })
+
         let savebutton = this.state.cart.map((el, i)=> {
             return (
                 <div key={el + i}>
@@ -132,13 +140,15 @@ updateItemQuantity(){
             )
         })
 
+       let pricetotal = this.state.prices.reduce((acc, val)=>{ return(acc + val)}, 0)
+
         return(
             <div>
                 <Navbar/>
                         <div className="productflex">
                             <div className="productnamecolumn" >
                                 <h3>Product:</h3><br/>
-                                {productname}
+                                {productname}                               
                             </div>
                             <div className="productpricecolumn" >
                                 <h3>Price:</h3><br/>
@@ -151,6 +161,7 @@ updateItemQuantity(){
                             <div className="editquantitycolumn"> {quantitybutton}</div>
                             <div className="deletebuttoncolumn">{deletebutton}</div> 
                         </div> 
+                        <div className="total"><h3>Total: ${pricetotal}</h3></div>
                         <button className="checkoutbutton" onClick={()=> {window.location.href = '/checkout'}}>Checkout</button>
             </div>
         )

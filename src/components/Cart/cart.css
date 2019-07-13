@@ -84,3 +84,7 @@
     height: 40px;
     width: 100px;
 }
+
+.total {
+    align-self: flex-end;
+}
