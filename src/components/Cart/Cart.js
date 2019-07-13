@@ -1,7 +1,5 @@
-/* TODO:
-Fix ordering after item quantity is updated
-Style buttons and layout for buttons and column headers
-*/
+//TODO: Add comma to cart total.
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
@@ -54,7 +52,7 @@ getCart(){
         console.log(req.data)
         this.setState({cart: req.data})
     }).then(()=> this.state.cart.map((el, i)=> {
-        let price = parseFloat(el.price)
+        let price = parseFloat(el.price * el.quantity)
         cart.push(price)
         this.setState({prices: cart})
     }))
@@ -140,29 +138,34 @@ updateItemQuantity(){
             )
         })
 
-       let pricetotal = this.state.prices.reduce((acc, val)=>{ return(acc + val)}, 0)
+       let pricetotal = this.state.prices.reduce((acc, val)=>{return(acc + val)}, 0).toFixed(2)
 
         return(
             <div>
+                {this.state.prices.length > 1 ?
+                <div>
                 <Navbar/>
                         <div className="productflex">
                             <div className="productnamecolumn" >
-                                <h3>Product:</h3><br/>
+                                <h3>Product</h3><br/>
                                 {productname}                               
                             </div>
                             <div className="productpricecolumn" >
-                                <h3>Price:</h3><br/>
+                                <h3> Item Price</h3><br/>
                                 {price}
                             </div>
                             <div className="quantitycolumn" >
-                                <h3>Quantity:</h3><br/>
+                                <h3>Quantity</h3><br/>
                                 {quantity}
                             </div>
+                            
                             <div className="editquantitycolumn"> {quantitybutton}</div>
                             <div className="deletebuttoncolumn">{deletebutton}</div> 
                         </div> 
                         <div className="total"><h3>Total: ${pricetotal}</h3></div>
                         <button className="checkoutbutton" onClick={()=> {window.location.href = '/checkout'}}>Checkout</button>
+                        </div>
+                        : <Navbar/>}
             </div>
         )
     }

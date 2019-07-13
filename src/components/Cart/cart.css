@@ -40,17 +40,23 @@
     display: flex;
     position: relative;
     flex-direction: column;
+    padding-right: 20px;
 }
 .cartproductname {
     padding-top: 10px;
     padding-bottom: 8px;
     text-decoration: none;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
 }
 .cartquantity {
     padding-bottom: 8px;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
     padding-top: 10px;
+}
+.cartquantity input{
+    width: 40px;
+    height: 15px;
+    text-align: center;
 }
 .editquantitycolumn {
     display: flex;
@@ -59,8 +65,13 @@
     margin-top: 85px;
 }
 .editquantitycolumn button {
-    margin-top:10px;
-    margin-bottom:8px;
+    margin-top:0px;
+    margin-bottom:15px;
+    color: black;
+    background-color: white;
+    border-radius: 4px; 
+    height: 20px;
+    width: 88px;
 }
 .deletebuttoncolumn {
     display: flex;
@@ -69,18 +80,23 @@
     margin-top: 85px;
 }
 .deletebuttoncolumn button {
-    margin-top:10px;
-    margin-bottom:8px;
+    margin-top:0px;
+    margin-bottom:15px;
+    color: black;
+    background-color: white;
+    border-radius: 4px; 
+    height: 20px;
+    width: 60px;
 }
 .cartproductprice {
     padding-bottom: 8px;
     padding-top: 10px;
-    border-bottom: 1px solid black;
 }
 
 .checkoutbutton {
     color: white;
     background-color: black;
+    border-radius: 4px;
     height: 40px;
     width: 100px;
 }
