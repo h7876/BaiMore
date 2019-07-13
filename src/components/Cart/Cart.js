@@ -26,6 +26,7 @@ class Cart extends Component {
         this.editToggle = this.editToggle.bind(this);
         this.handleQuantityChange = this.handleQuantityChange.bind(this);
         this.updateItemQuantity = this.updateItemQuantity.bind(this);
+        this.clearCart = this.clearCart.bind(this);
     }
     componentDidMount(){
         this.getCart();
@@ -79,6 +80,15 @@ updateItemQuantity(){
         alert('Quantity Updated')
         this.setState({edit:false}, this.getCart())
     })
+}
+
+clearCart(){
+    let cartid = parseInt(this.props.cartid)
+    axios.delete(`/api/cart/delete/${cartid}`).then(
+        (req)=> {
+            this.getCart()
+        }
+    )
 }
 
     render(){
@@ -169,7 +179,7 @@ updateItemQuantity(){
                         <div className="total"><h3>Total: ${pricetotal}</h3></div>
                         <button className="checkoutbutton" onClick={()=> {this.setState({checkout: true})}}>Checkout</button>
                         </div>
-                        : <Checkout checkouttotal={pricetotal*100}/>}
+                        : <Checkout checkouttotal={Math.round(pricetotal * 100)} clearcart={this.clearCart}/>}
             </div>
         )
     }

@@ -37,7 +37,7 @@ class Checkout extends Component {
         address_country: address_country});
         let {amount, currency, description} = this.state;
         axios.post('/charge', {token, amount, currency, description}).then(()=> {
-            this.setState({complete: true})
+            this.setState({complete: true}, this.props.clearcart())
         })
     }
 
@@ -45,7 +45,16 @@ class Checkout extends Component {
       const updateByPropertyName = (propertyName, value) => ({
         [propertyName]: value
        });
-        if (this.state.complete) return <h1>Purchase Complete</h1>;
+        if (this.state.complete){ return(
+            <div><Navbar/>
+        <div className="complete">
+            
+        <h1>Purchase Complete!</h1>
+        <button onClick={()=> {window.location.href = '/'}}>Keep Shopping</button>
+        </div>
+        </div>)
+    }
+
         return(
             <div>
                 <Navbar/>

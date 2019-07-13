@@ -73,3 +73,22 @@
     font-size: 25px;
     font-weight: 400;
   }
+  .complete h1{
+    font-family: 'montserrat', sans-serif;
+    font-size: 70px;
+    font-weight: 200;
+    margin-top: 200px;
+   
+  }
+  .complete button {
+    margin-top: 20px;
+    color: white;
+    background-color: black;
+    border-radius: 4px;
+    height: 50px;
+    width: 200px;
+    font-size: 20px;
+    font-family: 'montserrat';
+    font-weight: 200;
+  }
+  

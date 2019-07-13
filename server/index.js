@@ -120,6 +120,16 @@ app.delete('/api/cart/deleteitem/:productcode/:cartid', (req, res)=> {
     })
 })
 
+//remove all items from user's cart
+app.delete('/api/cart/delete/:cartid', (req, res)=> {
+    let cartid = req.params.cartid
+    req.app.get('db').deleteCart([cartid]).then(ok => {
+        res.sendStatus(200)
+    }).catch(err=> {
+        res.status(500).send(err)
+    })
+})
+
 //Stripe checkout
 app.post("/charge", async (req, res) => {
     try {
