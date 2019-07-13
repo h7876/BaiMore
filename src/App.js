@@ -60,11 +60,14 @@ class App extends Component {
         <Route path='/product/:productcode' component={(props) => <Product {...props} cartid={this.state.cartid}/>}/>
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
-        <Route path='/cart/' component={(props) => <Cart {...props} cartid={this.state.cartid}/>}/><StripeProvider apiKey="pk_test_AH1aYOINzkuPuos8rpEG3IJV00uGd3ELkp">
+        <StripeProvider apiKey="pk_test_AH1aYOINzkuPuos8rpEG3IJV00uGd3ELkp">
         <Elements>
-        <Route path='/checkout' component={Checkout}/>
+        <Route path='/cart/' component={(props) => <Cart {...props} cartid={this.state.cartid}/>}/>
         </Elements>
         </StripeProvider>
+        
+        <Route path='/checkout' component={Checkout}/>
+        
       </div>
       </Router>
     );

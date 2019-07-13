@@ -5,6 +5,9 @@ import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
 import cart from './cart.css'
 import { app } from 'firebase';
+import Checkout from '../Checkout/Checkout';
+
+
 class Cart extends Component {
    
     constructor(){
@@ -15,7 +18,8 @@ class Cart extends Component {
             edit: false,
             itemtoedit: '',
             newquantity: [],
-            prices: []
+            prices: [],
+            checkout: false
         }
         this.getCart = this.getCart.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
@@ -142,7 +146,7 @@ updateItemQuantity(){
 
         return(
             <div>
-                {this.state.prices.length > 1 ?
+                {!this.state.checkout ?
                 <div>
                 <Navbar/>
                         <div className="productflex">
@@ -163,9 +167,9 @@ updateItemQuantity(){
                             <div className="deletebuttoncolumn">{deletebutton}</div> 
                         </div> 
                         <div className="total"><h3>Total: ${pricetotal}</h3></div>
-                        <button className="checkoutbutton" onClick={()=> {window.location.href = '/checkout'}}>Checkout</button>
+                        <button className="checkoutbutton" onClick={()=> {this.setState({checkout: true})}}>Checkout</button>
                         </div>
-                        : <Navbar/>}
+                        : <Checkout checkouttotal={pricetotal*100}/>}
             </div>
         )
     }

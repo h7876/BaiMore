@@ -5,11 +5,14 @@ import {CardElement, injectStripe} from 'react-stripe-elements';
 import axios from 'axios';
 
 class Checkout extends Component {
+    componentDidMount(){
+       
+    }
     constructor(props){
         super(props)
         this.state = {
             complete: false,
-            amount: 2000,
+            amount: this.props.checkouttotal,
             currency: "usd",
             description: "BaiMore Test",
             name: "",
