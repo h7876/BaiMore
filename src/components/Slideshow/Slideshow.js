@@ -5,15 +5,28 @@ import slideshow from './slideshow.css';
 class Slideshow extends Component {
 
     componentDidMount(){
-        this.setCarouselImg();
+        let i =0;
+        this.imageTimer = setInterval(()=>{
+            if(i !== this.state.currentImage){
+                i=this.state.currentImage
+                i++}
+            if(i === this.state.currentImage){
+                i++}
+            if(i === this.state.images.length || i > this.state.images.length){
+              i=0}
+           this.setState({currentImage:i})
+        }, 7000);
     }
+    componentWillUnmount() {
+        clearInterval(this.imageTimer);
+      }
     constructor(){
         super();
         this.state = {
             images: ['https://cdn.jane.com/content/images/retail/2018/fall/21week2-web.jpg', 'https://cdn.jane.com/content/images/giveaway/2018/2018-09-03/2018-09-03-apt2b-index.jpg', 'https://cdn.jane.com/content/images/jane/banners/slider/app/app-slider-banner-2018-09-05.jpg'],
             currentImage: 0
         }
-        this.setCarouselImg = this.setCarouselImg.bind(this);
+        // this.setCarouselImg = this.setCarouselImg.bind(this);
         this.moveCarouselBackward = this.moveCarouselBackward.bind(this);
         this.moveCarouselForward = this.moveCarouselForward.bind(this);
     }
@@ -36,23 +49,6 @@ class Slideshow extends Component {
         }
     }
 
-    setCarouselImg(){
-        let i =0;
-        // eslint-disable-next-line
-        let imgTimer = setInterval(()=>{
-        if(i !== this.state.currentImage){
-            i=this.state.currentImage
-            i++
-        }
-        if(i === this.state.currentImage){
-            i++
-        }
-       if(i === this.state.images.length || i > this.state.images.length){
-          i=0
-       }
-       this.setState({currentImage:i})
-    }, 7000);
-    }
 
     render(){
         return(
