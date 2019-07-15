@@ -39,25 +39,6 @@
     color:white;
 }
 
-/* .welcome{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 68px;
-    justify-content: center;
-    top: 50px;
-    position: fixed;
-    opacity: 1;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 2s;
-
-} */
-
-/* .navbuttonbar{
-    position: absolute;
-    top: 50px;
-
-} */
 .button{
     background-color: #F5F5F5;
     font-family: 'Montserrat', sans-serif;
@@ -145,6 +126,7 @@
     }
 
     .title{
+        width: auto;
         color: white;
         font-family: 'Quicksand', sans-serif;
         font-size: 30px;
@@ -163,11 +145,13 @@
 
     }
     .title a {
+
         text-decoration: none;
         color: white;
     }
 
     .welcome{
+
         font-family: 'Montserrat', sans-serif;
         font-size: 68px;
         justify-content: center;
@@ -181,11 +165,6 @@
 
     }
 
-    /* .navbuttonbar{
-        position: absolute;
-        top: 50px;
-
-    } */
     .button{
        display: none;
     }
@@ -195,9 +174,18 @@
     }
     .flex-container{
         display: none;
-
-
     }
+
+    .AuthOptions {
+        display: none;
+    }
+
+    .mobileauth {
+        position: relative;
+        display: block;
+        padding-bottom: 50px;
+        transform: translate(15%, 0);
+    }    
 
     @keyframes fadeInOpacity {
         0% {
@@ -232,12 +220,9 @@
   position: fixed;
   top: 0px;
   left: 0px;
-
   cursor: pointer;
-
   opacity: 0;
   z-index: 3;
-
   -webkit-touch-callout: none;
 }
 #toggle span
@@ -308,12 +293,9 @@ Styling of the Menu that slides out
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
-
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
-
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-
 }
 
 #menu li

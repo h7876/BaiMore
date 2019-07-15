@@ -39,7 +39,7 @@ class App extends Component {
         var uid = user.uid;
         this.setState({uid:uid}, (()=> this.getCartId(uid)))
       } else {
-        alert('error authenticating')
+        console.log("Please Log In")
       }
     })
   }

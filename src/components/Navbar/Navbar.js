@@ -15,8 +15,9 @@ class Navbar extends Component {
     render(){
         return(
             <div>
-                
+                <div className="AuthOptions">
                 <AuthOptions/>
+                </div>
                 <nav>
                 <div id="toggle">
                 <input type="checkbox"/>
@@ -24,6 +25,9 @@ class Navbar extends Component {
                 <span></span>
                 <span></span>
                     <ul id="menu">
+                        
+                    <div className="mobileauth"><AuthOptions/></div>
+                  
                         <a href="/"><li>Home</li></a>
                         <a href="/account"><li>Account</li></a>
                         <a href="/products/categories/women"><li>Women</li></a>
