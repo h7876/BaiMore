@@ -7,7 +7,6 @@ import product from './product.css';
 
     componentDidMount(){
         this.getProduct();
-        console.log(this.props.cartid)
     }
     componentWillMount(){
         this.topOfPage();

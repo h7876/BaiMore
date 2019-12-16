@@ -49,7 +49,7 @@ class App extends Component {
       <Router>
       <div className="App">
         <Route exact path="/" component={Home}/>
-        <Route path='/product/:productcode' component={Product}/>
+        <Route path='/product/:productcode' component={(props) => <Product {...props} cartid={this.state.cartid}/>}/>
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
         <StripeProvider apiKey="pk_test_AH1aYOINzkuPuos8rpEG3IJV00uGd3ELkp">
