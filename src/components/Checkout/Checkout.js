@@ -70,7 +70,8 @@ class Checkout extends Component {
                     
                     <h3>Payment Details:</h3>
                     <CardElement/>
-                    <button onClick={this.submit}>Send</button>
+                    <button className="back" onClick={(()=> {this.props.checkoutBack()})}>Back</button>
+                    <button className="submit" onClick={this.submit}>Submit</button>
                     </div>
                 </div>
             </div>

@@ -27,6 +27,7 @@ class Cart extends Component {
         this.handleQuantityChange = this.handleQuantityChange.bind(this);
         this.updateItemQuantity = this.updateItemQuantity.bind(this);
         this.clearCart = this.clearCart.bind(this);
+        this.checkoutBack = this.checkoutBack.bind(this);
     }
     componentDidMount(){
         this.getCart();
@@ -90,7 +91,9 @@ clearCart(){
         }
     )
 }
-
+checkoutBack(){
+    this.setState({checkout:false})
+}
     render(){
 
         let productname = this.state.cart.map((el, i)=> {
@@ -179,7 +182,7 @@ clearCart(){
                         <div className="total"><h3>Total: ${pricetotal}</h3></div>
                         <button className="checkoutbutton" onClick={()=> {this.setState({checkout: true})}}>Checkout</button>
                         </div>
-                        : <Checkout checkouttotal={Math.round(pricetotal * 100)} clearcart={this.clearCart}/>}
+                        : <Checkout checkouttotal={Math.round(pricetotal * 100)} clearcart={this.clearCart} checkoutBack={this.checkoutBack}/>}
             </div>
         )
     }
