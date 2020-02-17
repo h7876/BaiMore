@@ -65,6 +65,7 @@ class App extends Component {
           className='toast-container'
           toastClassName="dark-toast"
           progressClassName={css({height: "5px"})}
+          position={toast.POSITION.BOTTOM_RIGHT}
         />
         <Route path='/checkout' component={Checkout}/>
         

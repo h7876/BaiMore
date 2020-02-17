@@ -35,7 +35,6 @@ import product from './product.css';
     }
 
     addToCart(){
-
         let productcode = parseInt(this.props.match.params.productcode);
         let cartid = this.props.cartid;
         let quantity = parseInt(this.state.quantity)
@@ -47,7 +46,6 @@ import product from './product.css';
     }
 
     render(){
-        const notify = () => toast("Added to cart!", {autoClose:1500});
         const {
             quantity
         } = this.state;
