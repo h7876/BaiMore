@@ -226,7 +226,7 @@ body{
         /* width: auto; */
         height: 200px;
         justify-content: center;
-        max-width: 100%;
+        width: inherit;
         max-height: 300px;
         margin: auto;
 
@@ -234,10 +234,10 @@ body{
 
     .carouselimg {
         /* display: grid; */
-        width: 100%;
+        width: inherit;
         /* min-width: 300px; */
         height: 200px;
-        max-width: 100%;
+        /* max-width: 100%; */
         margin: auto;
     }
     .dot1{

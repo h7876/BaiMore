@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import product from './product.css';
 
  class Product extends Component {
@@ -10,6 +12,7 @@ import product from './product.css';
     }
     componentWillMount(){
         this.topOfPage();
+        
     }
    
     constructor(){
@@ -32,10 +35,11 @@ import product from './product.css';
     }
 
     addToCart(){
+
         let productcode = parseInt(this.props.match.params.productcode);
         let cartid = this.props.cartid;
         let quantity = parseInt(this.state.quantity)
-        axios.post(`/api/cart/${cartid}`, { productcode , quantity }).then(()=> {alert('Added to Cart!')}).then(()=> {window.location.href = '/cart'}).catch(error => {console.log(error)});
+        axios.post(`/api/cart/${cartid}`, { productcode , quantity }).then(()=> {toast("Added to cart!")}).then(()=> this.setState({quantity:''})).catch(error => {console.log(error)});
     }
 
     topOfPage(){
@@ -43,6 +47,7 @@ import product from './product.css';
     }
 
     render(){
+        const notify = () => toast("Added to cart!", {autoClose:1500});
         const {
             quantity
         } = this.state;
@@ -64,7 +69,7 @@ import product from './product.css';
                             <div className="singleproductprice">
                             <div className="singleline">
                                 <p>${this.state.product.price}</p>
-                               <input type="number" value={this.state.quantity}  maxLength="4" onChange={event => this.setState(updateByPropertyName('quantity', event.target.value))}></input><button onClick={()=>{this.addToCart()}}>Add To Cart</button>
+                               <input type="number" value={this.state.quantity} maxLength="4" onChange={event => this.setState(updateByPropertyName('quantity', event.target.value))}></input><button onClick={()=>{this.addToCart()}}>Add To Cart</button>
                                </div>
                             </div>
                         </div>

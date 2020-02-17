@@ -9,7 +9,10 @@ import Checkout from './components/Checkout/Checkout'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import firebase from 'firebase';
 import axios from 'axios';
-import {Elements, StripeProvider} from 'react-stripe-elements'
+import {Elements, StripeProvider} from 'react-stripe-elements';
+import {toast, ToastContainer} from 'react-toastify';
+import {css} from 'glamor';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 class App extends Component {
@@ -57,7 +60,12 @@ class App extends Component {
         <Route path='/cart/' component={(props) => <Cart {...props} cartid={this.state.cartid}/>}/>
         </Elements>
         </StripeProvider>
-        
+        <ToastContainer 
+          autoClose={3000} 
+          className='toast-container'
+          toastClassName="dark-toast"
+          progressClassName={css({height: "5px"})}
+        />
         <Route path='/checkout' component={Checkout}/>
         
       </div>
