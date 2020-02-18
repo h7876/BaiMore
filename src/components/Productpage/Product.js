@@ -36,7 +36,7 @@ import product from './product.css';
 
     addToCart(){
         let productcode = parseInt(this.props.match.params.productcode);
-        let cartid = this.props.cartid;
+        let cartid = this.props.location.state.cartid;
         let quantity = parseInt(this.state.quantity)
         axios.post(`/api/cart/${cartid}`, { productcode , quantity }).then(()=> {toast("Added to cart!")}).then(()=> this.setState({quantity:''})).catch(error => {console.log(error)});
     }
@@ -54,7 +54,7 @@ import product from './product.css';
           });
         return(
             <div>
-                <Navbar/>
+                <Navbar cartid={this.props.location.state.cartid}/>
                 <div className="singleproductflex">
                     <div className="singleproductcontainer">
                         <div className="singleproductimg">

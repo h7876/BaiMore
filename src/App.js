@@ -51,7 +51,7 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-        <Route exact path="/" component={Home}/>
+        <Route exact path="/" component={(props) => <Home {...props} cartid={this.state.cartid}/>}/>
         <Route path='/product/:productcode' component={(props) => <Product {...props} cartid={this.state.cartid}/>}/>
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>

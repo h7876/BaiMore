@@ -1,0 +1,1 @@
+select SUM(quantity) from cart where cartid=$1

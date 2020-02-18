@@ -16,7 +16,7 @@ class Navbar extends Component {
         return(
             <div>
                 <div className="AuthOptions">
-                <AuthOptions/>
+                <AuthOptions cartid={this.props.cartid}/>
                 </div>
                 <nav>
                 <div id="toggle">

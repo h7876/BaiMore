@@ -22,7 +22,7 @@ class Card extends Component {
   getProducts(){
     axios.get("/api/products/").then((req)=> {
       console.log(req.data);
-      this.setState({realProducts: req.data})
+      this.setState({realProducts: req.data}, this.forceUpdate())
     })
   }
 
@@ -30,7 +30,7 @@ class Card extends Component {
     const productsToDisplay = this.state.realProducts.map((el, i)=> {
       return(
         <div className="card" key={el + i}>
-         <Link to={`/product/${el.productcode}`}>
+         <Link to={{pathname:`/product/${el.productcode}`, state:{cartid:this.props.cartid}}}>
          
           <div className="productimg">
           <img src={el.image} alt="Product" height="330" width="260" ></img>

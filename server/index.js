@@ -84,7 +84,16 @@ app.get('/api/cartid/:userid',(req, res)=> {
         res.status(500).send(err)
     })
 })
-
+app.get('/api/cart/quantity/:cartid', (req, res)=> {
+    dbInstance = req.app.get('db');
+    cartid = req.params.cartid
+    dbInstance.getCartQuantity([cartid]).then(quantity=> {
+        res.status(200).send(quantity)
+    }).catch(err=> {
+        console.log(err)
+        res.status(500).send(err)
+    })
+})
 //add an item to a user's cart
 app.post('/api/cart/:cartid', (req, res)=> {
     const cartid = req.params.cartid

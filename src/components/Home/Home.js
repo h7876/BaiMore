@@ -9,9 +9,9 @@ import home from './home.css';
     render(){
         return(
             <div>
-                <Navbar/>
+                <Navbar cartid={this.props.cartid}/>
                 <Slideshow/>
-                <Card/>
+                <Card cartid={this.props.cartid}/>
             </div>
         )
     }
