@@ -46,7 +46,7 @@ class Checkout extends Component {
         [propertyName]: value
        });
         if (this.state.complete){ return(
-            <div><Navbar/>
+            <div><Navbar toggleView={this.state.toggleView}/>
         <div className="complete">
             
         <h1>Purchase Complete!</h1>
@@ -57,7 +57,7 @@ class Checkout extends Component {
 
         return(
             <div>
-                <Navbar/>
+                <Navbar toggleView={this.props.toggleView}/>
                 <div className="checkout">
                     <div className="address-flexbox">
                     <h3>Shipping Address:</h3>

@@ -16,7 +16,7 @@ class Navbar extends Component {
         return(
             <div>
                 <div className="AuthOptions">
-                <AuthOptions cartid={this.props.cartid}/>
+                <AuthOptions cartid={this.props.cartid} cartquantity={this.props.cartquantity} toggleView={this.props.toggleView}/>
                 </div>
                 <nav>
                 <div id="toggle">
@@ -44,9 +44,9 @@ class Navbar extends Component {
             <div className="topbar">
             </div>
             <div className="title">
-            <Link to="/">
+            <button onClick={(()=> {this.props.toggleView('mainView')})}>
             BaiMore
-            </Link>
+            </button>
             </div>
             <div className="welcome"></div>
             <div className="flex-container">

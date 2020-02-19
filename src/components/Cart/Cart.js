@@ -161,7 +161,7 @@ checkoutBack(){
             <div>
                 {!this.state.checkout ?
                 <div>
-                <Navbar/>
+                <Navbar viewCart={this.props.viewCart} toggleView={this.props.toggleView}/>
                         <div className="productflex">
                             <div className="productnamecolumn" >
                                 <h3>Product</h3><br/>
@@ -182,7 +182,7 @@ checkoutBack(){
                         <div className="total"><h3>Total: ${pricetotal}</h3></div>
                         <button className="checkoutbutton" onClick={()=> {this.setState({checkout: true})}}>Checkout</button>
                         </div>
-                        : <Checkout checkouttotal={Math.round(pricetotal * 100)} clearcart={this.clearCart} checkoutBack={this.checkoutBack}/>}
+                        : <Checkout checkouttotal={Math.round(pricetotal * 100)} clearcart={this.clearCart} checkoutBack={this.checkoutBack} toggleView={this.props.toggleView}/>}
             </div>
         )
     }

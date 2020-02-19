@@ -8,6 +8,7 @@ import axios from 'axios';
 class AuthOptions extends Component{
     componentDidMount(){
         this.authCheck();
+        console.log(this.props)
       }
 
     constructor(){
@@ -60,10 +61,11 @@ class AuthOptions extends Component{
             <div>
                 {this.state.uid ?
                  <div>
-                     <Link to='/cart'>
+                     {/* <Link to='/cart'> */}
                  <div className="cart">
-                    <button>Cart ({this.state.quantity}) </button>
-                </div></Link>
+                    <button onClick={(()=> {this.props.toggleView('cartView')})}>Cart ({this.props.cartquantity}) </button>
+                </div>
+                {/* </Link> */}
                  <div className="logout">
                     <button onClick={this.signUserOut}>Log Out</button>
                 </div></div>

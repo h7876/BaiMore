@@ -9,6 +9,7 @@ import product from './product.css';
 
     componentDidMount(){
         this.getProduct();
+        console.log(this.props)
     }
     componentWillMount(){
         this.topOfPage();
@@ -28,17 +29,17 @@ import product from './product.css';
 
 
     getProduct(){
-        let productcode = this.props.match.params.productcode
+        let productcode = this.props.productCode
         axios.get(`/api/product/${productcode}`).then((req)=> {
             this.setState({product: req.data[0]})
         })
     }
 
     addToCart(){
-        let productcode = parseInt(this.props.match.params.productcode);
-        let cartid = this.props.location.state.cartid;
+        let productcode = parseInt(this.props.productcode);
+        let cartid = this.props.cartid;
         let quantity = parseInt(this.state.quantity)
-        axios.post(`/api/cart/${cartid}`, { productcode , quantity }).then(()=> {toast("Added to cart!")}).then(()=> this.setState({quantity:''})).catch(error => {console.log(error)});
+        axios.post(`/api/cart/${cartid}`, { productcode , quantity }).then(()=> {toast("Added to cart!")}).then(()=> this.setState({quantity:''}, this.props.getCartQuantity())).catch(error => {console.log(error)});
     }
 
     topOfPage(){
@@ -54,7 +55,7 @@ import product from './product.css';
           });
         return(
             <div>
-                <Navbar cartid={this.props.location.state.cartid}/>
+                <Navbar cartid={this.props.cartid} cartquantity={this.props.cartquantity} toggleView={this.props.toggleView}/>
                 <div className="singleproductflex">
                     <div className="singleproductcontainer">
                         <div className="singleproductimg">

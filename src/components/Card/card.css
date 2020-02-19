@@ -20,6 +20,9 @@
   opacity: 50;
 
 }
+.card button {
+  border: none;
+}
 .card a {
   text-decoration: none;
   color: black;

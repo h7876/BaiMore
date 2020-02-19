@@ -17,8 +17,10 @@
     z-index: 3;
 }
 
-.title{
+.title button{
   color: white;
+  background-color: black;
+  border: none;
   font-family: 'Quicksand', sans-serif;
   font-size: 30px;
   font-weight: 200;

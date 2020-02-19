@@ -32,7 +32,7 @@ class App extends Component {
   getCartId(uid){
     axios.get(`/api/cartid/${uid}`).then((req)=> {
         console.log(req.data[0].cartid)
-        this.setState({cartid:req.data[0].cartid}, this.setState())
+        this.setState({cartid:req.data[0].cartid}, this.forceUpdate())
     })
  }
 
@@ -51,15 +51,15 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
+        <StripeProvider apiKey="pk_test_AH1aYOINzkuPuos8rpEG3IJV00uGd3ELkp">
+        <Elements>
         <Route exact path="/" component={(props) => <Home {...props} cartid={this.state.cartid}/>}/>
+        </Elements>
+        </StripeProvider>
         <Route path='/product/:productcode' component={(props) => <Product {...props} cartid={this.state.cartid}/>}/>
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
-        <StripeProvider apiKey="pk_test_AH1aYOINzkuPuos8rpEG3IJV00uGd3ELkp">
-        <Elements>
         <Route path='/cart/' component={(props) => <Cart {...props} cartid={this.state.cartid}/>}/>
-        </Elements>
-        </StripeProvider>
         <ToastContainer 
           autoClose={3000} 
           className='toast-container'
@@ -67,7 +67,6 @@ class App extends Component {
           progressClassName={css({height: "5px"})}
           position={toast.POSITION.BOTTOM_RIGHT}
         />
-        <Route path='/checkout' component={Checkout}/>
         
       </div>
       </Router>
