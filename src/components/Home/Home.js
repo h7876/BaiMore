@@ -19,7 +19,8 @@ import home from './home.css';
             productPageToggle: true,
             quantity: '',
             productCode: '',
-            currentView: 'mainView'
+            currentView: 'mainView',
+            cartid: ''
         }
         this.toggleView = this.toggleView.bind(this);
         this.getCartQuantity = this.getCartQuantity.bind(this);
@@ -28,8 +29,8 @@ import home from './home.css';
         this.viewMain = this.viewMain.bind(this);
     }
 
-    toggleView(view){
-        this.setState({currentView: view})
+    toggleView(view, cartid){
+        this.setState({currentView: view, cartid: cartid})
     }
 
 
@@ -57,7 +58,7 @@ import home from './home.css';
                 <div>
                     <Navbar cartid={this.props.cartid} cartquantity={this.state.quantity} toggleView={this.toggleView}/>
                     <Slideshow/>
-                    <Card cartid={this.props.cartid} viewProduct={this.viewProduct} toggleView={this.props.toggleView}/>
+                    <Card cartid={this.props.cartid} viewProduct={this.viewProduct} toggleView={this.props.toggleView} productCode={this.state.productCode}/>
                 </div>
             )
         }
@@ -73,7 +74,7 @@ import home from './home.css';
         if(this.state.currentView == 'cartView'){
             return(
                 <div>
-                    <Navbar cartid={this.props.cartid} cartquantity={this.state.quantity} toggleView={this.toggleView}/>
+                    <Navbar cartid={this.state.cartid} cartquantity={this.state.quantity} toggleView={this.toggleView}/>
                     <Cart getCartQuantity={this.getCartQuantity} cartquantity={this.state.quantity} productCode={this.state.productCode} cartid={this.props.cartid} toggleView={this.toggleView}/>
                 </div>
             )

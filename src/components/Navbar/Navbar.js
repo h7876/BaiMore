@@ -26,7 +26,7 @@ class Navbar extends Component {
                 <span></span>
                     <ul id="menu">
                         
-                    <div className="mobileauth"><AuthOptions/></div>
+                    <div className="mobileauth"><AuthOptions cartid={this.props.cartid} cartquantity={this.props.cartquantity} toggleView={this.props.toggleView}/></div>
                   
                         <a href="/"><li>Home</li></a>
                         <a href="/account"><li>Account</li></a>

@@ -26,7 +26,7 @@ class AuthOptions extends Component{
         let cartid= this.props.cartid
         axios.get(`/api/cart/quantity/${cartid}`).then((req)=> {
             console.log(req.data[0].sum)
-            this.setState({quantity:req.data[0].sum}, this.forceUpdate())
+            this.setState({quantity:req.data[0].sum})
         })
     }
 
@@ -63,7 +63,7 @@ class AuthOptions extends Component{
                  <div>
                      {/* <Link to='/cart'> */}
                  <div className="cart">
-                    <button onClick={(()=> {this.props.toggleView('cartView')})}>Cart ({this.props.cartquantity}) </button>
+                    <button onClick={(()=> {this.props.toggleView('cartView', this.props.cartid)})}>Cart ({this.props.cartquantity}) </button>
                 </div>
                 {/* </Link> */}
                  <div className="logout">

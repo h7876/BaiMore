@@ -36,7 +36,7 @@ import product from './product.css';
     }
 
     addToCart(){
-        let productcode = parseInt(this.props.productcode);
+        let productcode = parseInt(this.props.productCode);
         let cartid = this.props.cartid;
         let quantity = parseInt(this.state.quantity)
         axios.post(`/api/cart/${cartid}`, { productcode , quantity }).then(()=> {toast("Added to cart!")}).then(()=> this.setState({quantity:''}, this.props.getCartQuantity())).catch(error => {console.log(error)});

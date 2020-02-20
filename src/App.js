@@ -32,7 +32,7 @@ class App extends Component {
   getCartId(uid){
     axios.get(`/api/cartid/${uid}`).then((req)=> {
         console.log(req.data[0].cartid)
-        this.setState({cartid:req.data[0].cartid}, this.forceUpdate())
+        this.setState({cartid:req.data[0].cartid})
     })
  }
 
@@ -59,7 +59,6 @@ class App extends Component {
         <Route path='/product/:productcode' component={(props) => <Product {...props} cartid={this.state.cartid}/>}/>
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
-        <Route path='/cart/' component={(props) => <Cart {...props} cartid={this.state.cartid}/>}/>
         <ToastContainer 
           autoClose={3000} 
           className='toast-container'

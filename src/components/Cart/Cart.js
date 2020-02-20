@@ -34,11 +34,7 @@ class Cart extends Component {
         console.log(this.props)
 
     }
-    componentDidUpdate(prevProps) {
-        if (this.props.cartid !== prevProps.cartid) {
-          this.getCart();
-        }
-      }
+
 //Toggles quantity to be an input field
 editToggle(el){
     this.setState({edit: !this.state.edit, itemtoedit: el.productcode})
@@ -55,7 +51,7 @@ handleQuantityChange(event){
 getCart(){
     let cart = [];
     axios.get(`/api/cart/${this.props.cartid}`).then((req)=> {
-        console.log(req.data)
+        console.log(req)
         this.setState({cart: req.data})
     }).then(()=> this.state.cart.map((el, i)=> {
         let price = parseFloat(el.price * el.quantity)
@@ -161,7 +157,7 @@ checkoutBack(){
             <div>
                 {!this.state.checkout ?
                 <div>
-                <Navbar viewCart={this.props.viewCart} toggleView={this.props.toggleView}/>
+                <Navbar viewCart={this.props.viewCart} cartquantity={this.props.cartquantity} toggleView={this.props.toggleView}/>
                         <div className="productflex">
                             <div className="productnamecolumn" >
                                 <h3>Product</h3><br/>
