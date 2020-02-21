@@ -55,8 +55,8 @@ getCart(){
         this.setState({cart: req.data})
     }).then(()=> this.state.cart.map((el, i)=> {
         let price = parseFloat(el.price * el.quantity)
-        cart.push(price)
-        this.setState({prices: cart})
+            cart.push(price)
+        this.setState({prices: cart}, this.props.getCartQuantity())
     }))
 }
 //Deletes item from cart entirely
@@ -64,9 +64,10 @@ deleteItem(el){
     console.log(el)
     let cartid = parseInt(this.props.cartid)
     let productcode = parseInt(el.productcode)
-    axios.delete(`/api/cart/deleteitem/${productcode}/${cartid}`).then((req)=> {
+    axios.delete(`/api/cart/deleteitem/${productcode}/${cartid}`).then(()=> {
         alert('Item Deleted!')
-        this.getCart()
+        this.setState({edit:false}, this.getCart())
+        this.props.getCartQuantity()
     })
 }
 //Updates quantity for item in cart
@@ -151,8 +152,13 @@ checkoutBack(){
             )
         })
 
-       let pricetotal = this.state.prices.reduce((acc, val)=>{return(acc + val)}, 0).toFixed(2)
-
+        let pricetotal = 0.00
+        if (this.state.cart.length> 0){
+            pricetotal = this.state.prices.reduce((acc, val)=>{return(acc + val)}, 0).toFixed(2)
+        }
+        if (this.state.cart.length === 0){
+            pricetotal = 0.00
+        }
         return(
             <div>
                 {!this.state.checkout ?
