@@ -63,7 +63,7 @@ class AuthOptions extends Component{
                  <div>
                      {/* <Link to='/cart'> */}
                  <div className="cart">
-                    <button onClick={(()=> {this.props.toggleView('cartView', this.props.cartid)})}>Cart ({this.props.cartquantity}) </button>
+                    <button onClick={(()=> {this.props.toggleView('cartView', this.props.cartid)})}>Cart ({this.props.cartquantity ? this.props.cartquantity : "Empty"}) </button>
                 </div>
                 {/* </Link> */}
                  <div className="logout">
