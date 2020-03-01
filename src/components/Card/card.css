@@ -2,59 +2,48 @@
 
 .card{
   background-color: white;
-  height: 360px;
+  height: auto;
+  flex-wrap: wrap;
   width: 260px;
   margin: 10px;
+  padding: 0px;
   display: flex;
+  flex: 'flex-grow';
+  position: relative;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
-.productname{
+.card p{
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   text-decoration: underline;
-  left:10px;
-  font-size: 12px;
-  flex-direction: row;
-  padding-right: 15px
+  font-size: 14px;
 }
-.productimg:hover{
-  opacity: 50;
 
-}
 .card button {
   border: none;
+  margin: 0px;
+  padding: 0px;
 }
+ 
 .card a {
   text-decoration: none;
   color: black;
 }
-.flexy{
-  display: inline-flex;
-  padding-left:5px;
-  /* padding-top:2px; */
-  
-}
-/* .productimg{
-  margin-top:10px;
-  margin-bottom: none;
-} */
-.price{
-  font-family: 'Quicksand', sans-serif;
-  padding-bottom:5px;
-  font-size:12px;
-}
+
 .flexbox{
 z-index: 1;
  display: flex;
+ height: auto;
+ flex-direction: row;
  -webkit-flex-wrap: wrap;
  flex-wrap: wrap;
- -webkit-align-content: center;
- align-content: center;
- justify-content: center;
- padding-top: 10px;
+ -webkit-align-content: space-evenly;
+ align-content: space-evenly;
+ justify-content: space-evenly;
+ align-items: baseline;
  position: absolute;
  top:400px;
- padding-left:40px;
- padding-right:40px;
 }
 
 @media screen and (min-width:300px)and (max-width:767px){

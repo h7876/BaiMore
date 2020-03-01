@@ -30,23 +30,11 @@ class Card extends Component {
     const productsToDisplay = this.state.realProducts.map((el, i)=> {
       return(
         <div className="card" key={el + i}>
-         {/* <Link to={{pathname:`/product/${el.productcode}`, state:{cartid:this.props.cartid}}}> */}
          <button onClick={(()=> this.props.viewProduct(el.productcode))}>
-          <div className="productimg">
-          <img src={el.image} alt="Product" height="330" width="260" ></img>
-          <div className="flexy">
-
-            <div className="productname">
-         
-              {el.productname}
-              
-            </div>
-          <div className="price">{`${"$"}`+ el.price}</div>
-          </div>
-          </div>
-          
-          {/* </Link> */}
+          <img src={el.image} alt="Product" width="260" ></img>
           </button>
+          <p>{el.productname+ ' '}{' ' + `${"$"}`+ el.price}</p>
+        
         </div>
       )
     })
