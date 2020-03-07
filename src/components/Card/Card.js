@@ -34,7 +34,6 @@ class Card extends Component {
           <img src={el.image} alt="Product" width="260" ></img>
           </button>
           <p>{el.productname+ ' '}{' ' + `${"$"}`+ el.price}</p>
-        
         </div>
       )
     })
