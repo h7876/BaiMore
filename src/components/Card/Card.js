@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import card from './card.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import MasonryInfiniteScroller from 'react-masonry-infinite';
 
 class Card extends Component {
 
@@ -27,24 +28,18 @@ class Card extends Component {
   }
 
   render(){
-    const productsToDisplay = this.state.realProducts.map((el, i)=> {
-      return(
-        <div className="card" key={el + i}>
-         <button onClick={(()=> this.props.viewProduct(el.productcode))}>
-          <img src={el.image} alt="Product" width="260" ></img>
-          </button>
-          <p>{el.productname+ ' '}{' ' + `${"$"}`+ el.price}</p>
-        </div>
-      )
-    })
     return(
-      <div>
-        <div className="flexbox">
-      {productsToDisplay}
+
+      <MasonryInfiniteScroller
+        className="container" sizes={[{ columns: 1, gutter: 15 }, { mq: '768px', columns: 2, gutter: 15 }, { mq: '1024px', columns: 6, gutter: 15 }]} position='true'>
+          {this.state.realProducts.map((el, i)=> 
+            <div className="card" key={el + i}>
+            <button onClick={(()=> this.props.viewProduct(el.productcode))}>
+            <img src={el.image} alt="Product" width="260" ></img>
+            </button>
+            <p>{el.productname+ ' '}{' ' + `${"$"}`+ el.price}</p>
         </div>
-      </div>
-    )
-  }
-}
+     )}
+      </MasonryInfiniteScroller>)}}
 
 export default Card;
