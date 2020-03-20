@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500');
 
-.card{
+.element{
   background-color: white;
   height: auto;
   flex-wrap: wrap;
@@ -11,14 +11,14 @@
   flex-direction: column;
 }
 
-.card p{
+.element p{
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   text-decoration: underline;
   font-size: 16px;
 }
 
-.card button {
+.element button {
   border: none;
   margin: 0px;
   padding: 0px;
@@ -32,8 +32,27 @@
 .container{
  z-index: 1;
  top:100px;
+ width: 100vw;
 }
 
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+  padding-top: 100px;
+  padding-left: 100px;
+}
+.my-masonry-grid_column {
+  padding-left: 15px; /* gutter size */
+  background-clip: padding-box;
+}
+ 
+/* Style your items */
+.my-masonry-grid_column > .element {
+  margin-bottom: 30px;
+}
 @media screen and (min-width:300px)and (max-width:767px){
   .flexbox{
   z-index: 1;
@@ -48,3 +67,4 @@
   top:260px;
   }
 }
+
