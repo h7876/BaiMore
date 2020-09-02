@@ -1,3 +1,73 @@
+BaiMore is an ecommerce demo site, built with React, HTML, CSS, NodeJS, Express, Firebase, PostgreSQL and Stripe. Below is a quick start guide, followed by more information provided by React. 
+
+Getting Started:
+
+1. Download/Clone down the repository
+2. Ensure you have NodeJS and NPM installed https://nodejs.org/en/
+3. In the root of the project, run 'npm install' to install dependencies 
+4. Create a new PostgreSQL database, with the following tables:
+
+USERS:
+
+| Column |	Type |	Not Null |	Foreign Key |	Description |
+|--------|-------|-----------|---------------|----------------|
+|email |	character varying (34) |	Y |		|Email associated with user|
+|firstname |	character varying (34) |		|	|First Name of User|
+|lastname |	character varying (34) |	|		|Last Name of User|
+|phone |	character varying (16) |		|	|Phone number of User|
+|datejoined |	timestamp without time zone |		|	|Date user joined Baimore|
+|userid (PK) |	character varying (204) |	Y	|Firebase |	Used as part of firebase authentication  |
+|cartid (PK) |	bigint |	Y	|cart.cartid (FK)|	Used to join user data with what is in their cart|
+
+PRODUCTS:
+
+|Column|	Type |	Not Null |	Foreign Key |	Description |
+|------|------|---|------|-------------|
+|productid (PK)	| character varying (154)|	Y	|	|Used for inventory, UPC based|
+|productcode (PK)|	bigint|	Y| cart.productcode	|Used for tracking items privately|
+|productname|	character varying (104)	|	 |	|Name of product|
+|category	|character varying (34)|	|		|Category where the product is listed on the site|
+|subcategory|	character varying (34)	|||		More specific item category|
+|brand|	character varying (34)|||			Who makes the product|
+|image	|character varying (504)|||			Image of product|
+|price	|numeric (25)|	Y	| |	Price of product|
+
+CART:
+
+|Column|	Type |	Not Null |	Foreign Key |	Description |
+|------|------|---|------|-------------|
+|cartid (FK) |	bigint |	Y| 	users.cartid	| User cart ID|
+|productcode (FK)|	bigint|	Y	|Products.productcode	|Code of item in cart|
+|quantity|	bigint|	Y	| |	Quantity of Item in Cart|
+
+5. Set up Firebase authentication https://firebase.google.com/docs/auth/web/start
+6. Create a .env file in the project root with the following:
+
+SERVER_PORT=3131 
+
+CONNECTION_STRING
+
+REACT_APP_FIREBASE_KEY
+
+REACT_APP_FIREBASE_DOMAIN
+
+REACT_APP_FIREBASE_DATABASE
+
+REACT_APP_FIREBASE_PROJECT_ID
+
+REACT_APP_FIREBASE_STORAGE_BUCKET
+
+REACT_APP_FIREBASE_SENDER_ID
+
+NOTE : SSL needs to be enabled for the connection string to PostgreSQL database. 
+7. Globally install Nodemon (may need sudo) "npm i -g nodemon" 
+8. In the project root, run "npm start"
+9. In the project root, run "nodemon server/index.js"
+
+This should get the MVP functionality working, products will need to be added to the cart, but signing up a user should add them to Firebase and create a cart for the user, view products, add items to the cart and modify and delete them, and test checkout features with Stripe. 
+
+The Stripe key used is a test key, and should be replaced with a different key (found in App.js line 54)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
