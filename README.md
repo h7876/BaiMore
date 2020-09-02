@@ -60,6 +60,7 @@ REACT_APP_FIREBASE_STORAGE_BUCKET
 REACT_APP_FIREBASE_SENDER_ID
 
 NOTE : SSL needs to be enabled for the connection string to PostgreSQL database. 
+
 7. Globally install Nodemon (may need sudo) "npm i -g nodemon" 
 8. In the project root, run "npm start"
 9. In the project root, run "nodemon server/index.js"
